@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papa en Canarias 2026 · Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --oro: #C9A84C;
+  --oro-claro: #E8C97A;
+  --rojo: #8B1A1A;
+  --crema: #FAF7F0;
+  --carbón: #1A1814;
+  --gris: #6B6560;
+  --gris-claro: #EDE9E0;
+  --blanco: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--crema);
+  color: var(--carbón);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--carbón);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(139,26,26,0.15) 0%, transparent 60%);
+}
+
+.hero-ornamento {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--oro));
+  margin: 0 auto 32px;
+  animation: fadeDown 1s ease forwards;
+}
+
+.hero-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 8vw, 88px);
+  font-weight: 900;
+  color: var(--blanco);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero h1 em {
+  color: var(--oro);
+  font-style: normal;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.hero-fecha {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+.fecha-bloque {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.fecha-bloque:first-child { border-radius: 10px 0 0 10px; }
+.fecha-bloque:last-child  { border-radius: 0 10px 10px 0; }
+
+.fecha-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--oro);
+  line-height: 1;
+}
+
+.fecha-mes {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+.hero-nav {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: rgba(255,255,255,0.6);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background: var(--oro);
+  border-color: var(--oro);
+  color: var(--carbón);
+}
+
+/* ── SECCIONES ── */
+section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.seccion-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 12px;
+}
+
+.seccion-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--carbón);
+  margin-bottom: 8px;
+}
+
+.seccion-sub {
+  font-size: 15px;
+  color: var(--gris);
+  margin-bottom: 56px;
+  max-width: 560px;
+}
+
+/* ── SEPARADOR ── */
+.sep {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gris-claro), transparent);
+  margin: 0;
+}
+
+/* ── ESTADÍSTICAS ── */
+#estadisticas { background: var(--carbón); max-width: 100%; padding: 80px 24px; }
+#estadisticas .inner { max-width: 1100px; margin: 0 auto; }
+#estadisticas .seccion-titulo { color: var(--blanco); }
+#estadisticas .seccion-sub { color: rgba(255,255,255,0.45); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.12);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.3s;
+}
+
+.stat-card:hover { background: rgba(201,168,76,0.06); }
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--oro);
+  transition: height 0.4s ease;
+}
+
+.stat-card:hover::before { height: 100%; }
+
+.stat-icono {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--oro);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.stat-nota {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  margin-top: 8px;
+}
+
+/* ── CRONOLOGÍA ── */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--oro), var(--gris-claro));
+}
+
+.dia-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--carbón);
+  margin: 0 0 32px -32px;
+  padding: 10px 20px;
+  background: var(--carbón);
+  color: var(--oro);
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.tl-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+  position: relative;
+  cursor: pointer;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gris-claro);
+  border: 2px solid var(--gris);
+  transition: all 0.2s;
+}
+
+.tl-item:hover::before,
+.tl-item.activo::before {
+  background: var(--oro);
+  border-color: var(--oro);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+}
+
+.tl-hora {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--oro);
+  min-width: 60px;
+  padding-top: 2px;
+}
+
+.tl-contenido {
+  flex: 1;
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 10px;
+  padding: 18px 22px;
+  transition: all 0.2s;
+}
+
+.tl-item:hover .tl-contenido,
+.tl-item.activo .tl-contenido {
+  border-color: var(--oro);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+
+.tl-evento {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.tl-lugar {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.tl-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.badge-alto  { background: #FEE2E2; color: #991B1B; }
+.badge-medio { background: #FEF3C7; color: #92400E; }
+
+.tl-detalle {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gris-claro);
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+.tl-item.activo .tl-detalle { display: block; }
+
+/* ── HISTORIA VISITAS ── */
+#historia { background: var(--crema); }
+
+.historia-intro {
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.7;
+  border-left: 4px solid var(--oro);
+}
+
+.visitas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.papa-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.papa-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+.papa-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid var(--gris-claro);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.papa-inicial {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.papa-nombre {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.papa-años {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.papa-visitas {
+  padding: 16px 24px;
+}
+
+.visita-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-claro);
+  font-size: 13px;
+}
+
+.visita-item:last-child { border-bottom: none; }
+
+.visita-año {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--oro);
+  min-width: 44px;
+}
+
+.visita-info { flex: 1; line-height: 1.4; }
+.visita-lugar { font-weight: 500; }
+.visita-nota { font-size: 11px; color: var(--gris); }
+
+.visita-asistentes {
+  font-size: 11px;
+  color: var(--gris);
+  text-align: right;
+  min-width: 70px;
+}
+
+/* ── BARRA COMPARATIVA ── */
+.comparativa {
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 40px;
+}
+
+.comp-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: var(--carbón);
+}
+
+.barra-item {
+  margin-bottom: 20px;
+}
+
+.barra-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.barra-papa { font-weight: 500; }
+.barra-num { color: var(--gris); }
+
+.barra-track {
+  height: 8px;
+  background: var(--gris-claro);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barra-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── ENLACE AL MAPA ── */
+.mapa-cta {
+  background: var(--carbón);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.mapa-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 40px);
+  color: var(--blanco);
+  margin-bottom: 16px;
+}
+
+.mapa-cta p {
+  color: rgba(255,255,255,0.4);
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+.btn-mapa {
+  display: inline-block;
+  background: var(--oro);
+  color: var(--carbón);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-mapa:hover {
+  background: var(--oro-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--carbón);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── ANIMACIONES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .hero-nav { flex-wrap: wrap; justify-content: center; }
+  .fecha-bloque { padding: 12px 16px; }
+  .fecha-num { font-size: 28px; }
+  .tl-hora { font-size: 15px; min-width: 50px; }
+  section { padding: 56px 16px; }
+  .comparativa { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-ornamento"></div>
+  <p class="hero-label">Gran Canaria · Visita Apostólica</p>
+  <h1>Papa <em>León <em>XIV</em><br>en Canarias</h1>
+  <p class="hero-sub">El primer Papa en visitar las Islas Canarias</p>
+  <div class="hero-fecha">
+    <div class="fecha-bloque">
+      <div class="fecha-num">11</div>
+      <div class="fecha-mes">Jun 2026</div>
+    </div>
+    <div class="fecha-bloque">
+      <div class="fecha-num">12</div>
+      <div class="fecha-mes">Jun 2026</div>
+    </div>
+  </div>
+  <div class="hero-nav">
+    <a href="#estadisticas" class="nav-btn">Cifras</a>
+    <a href="#cronologia"   class="nav-btn">Cronología</a>
+    <a href="#historia"     class="nav-btn">Historia</a>
+    <a href="index.html"    class="nav-btn active">Ver mapa →</a>
+  </div>
+</div>
+
+<!-- ══ ESTADÍSTICAS ══════════════════════════════════════════════ -->
+<div id="estadisticas">
+  <div class="inner">
+    <div class="reveal">
+      <p class="seccion-label">El evento en cifras</p>
+      <h2 class="seccion-titulo">Estadísticas de la visita</h2>
+      <p class="seccion-sub">Estimaciones basadas en datos del Cabildo de Gran Canaria y fuentes oficiales del Vaticano.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <span class="stat-icono">👥</span>
+        <div class="stat-num" data-target="46000">0</div>
+        <div class="stat-label">Peregrinos esperados en la misa de Arguineguín</div>
+        <div class="stat-nota">Estimación Cabildo GC</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icono">🛣️</span>
+        <div class="stat-num" data-target="87">0</div>
+        <div class="stat-label">Kilómetros de recorrido papal en Gran Canaria</div>
+        <div class="stat-nota">Aeropuerto → Vegueta → Arguineguín</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icono">🚔</span>
+        <div class="stat-num" data-target="3500">0</div>
+        <div class="stat-label">Efectivos de seguridad desplegados</div>
+        <div class="stat-nota">CNP · Guardia Civil · Policía Local</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icono">🚌</span>
+        <div class="stat-num" data-target="120">0</div>
+        <div class="stat-label">Guaguas especiales en servicio los dos días</div>
+        <div class="stat-nota">Global · Guaguas Municipales</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icono">✈️</span>
+        <div class="stat-num" data-target="48">0</div>
+        <div class="stat-label">Horas de restricción del espacio aéreo</div>
+        <div class="stat-nota">ENAIRE · NOTAM publicado</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icono">📍</span>
+        <div class="stat-num" data-target="6">0</div>
+        <div class="stat-label">Actos oficiales en el programa papal</div>
+        <div class="stat-nota">Diócesis de Canarias</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ══ CRONOLOGÍA ════════════════════════════════════════════════ -->
+<section id="cronologia">
+  <div class="reveal">
+    <p class="seccion-label">Programa oficial</p>
+    <h2 class="seccion-titulo">Cronología de la visita</h2>
+    <p class="seccion-sub">Haz clic en cada acto para ver el detalle y el consejo de movilidad.</p>
+  </div>
+
+  <div class="timeline reveal">
+
+    <div class="dia-titulo">Jueves 11 de junio</div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">10:00</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">✈️ Llegada al Aeropuerto de Gran Canaria</div>
+        <div class="tl-lugar">Aeropuerto Internacional de Gran Canaria, Telde</div>
+        <div class="tl-detalle">
+          El Papa León XIV aterriza procedente de Roma. Recibimiento oficial por las autoridades insulares y religiosas. La GC-1 norte estará cortada en ambos sentidos entre el Nudo de Tafira y el aeropuerto desde las 08:00 hasta las 13:00.
+          <br><br>
+          💡 <strong>Consejo:</strong> Usa la GC-21 o el tranvía hasta Las Palmas Centro. Evita la zona aeroportuaria.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">12:00</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🏛️ Recepción en el Cabildo de Gran Canaria</div>
+        <div class="tl-lugar">Sede del Cabildo, Las Palmas de Gran Canaria</div>
+        <div class="tl-detalle">
+          Encuentro protocolario con el presidente del Cabildo y representantes institucionales. El centro de Las Palmas tendrá cortes de tráfico en las principales arterias.
+          <br><br>
+          💡 <strong>Consejo:</strong> Aparca en el parking de Triana y accede a Vegueta a pie. Los aparcamientos de la zona estarán cerrados.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">13:30</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">⛪ Visita a la Catedral de Santa Ana</div>
+        <div class="tl-lugar">Catedral de Santa Ana, Vegueta</div>
+        <div class="tl-detalle">
+          Acto litúrgico en la catedral más antigua de las islas, construida en el siglo XV. Zona de exclusión total en Vegueta durante este período.
+          <br><br>
+          💡 <strong>Consejo:</strong> Intercambiadores provisionales habilitados en Pérez Galdós. Paradas de guagua de Vegueta/Santa Ana suspendidas.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">18:00</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🏟️ Acto multitudinario – Estadio de Gran Canaria</div>
+        <div class="tl-lugar">Estadio de Gran Canaria, Las Palmas</div>
+        <div class="tl-detalle">
+          Encuentro con jóvenes y fieles en el estadio. Aforo estimado: 32.000 personas en el recinto + miles en zonas habilitadas en el exterior.
+          <br><br>
+          💡 <strong>Consejo:</strong> Usa las líneas especiales L1-ESP y L2-ESP desde los P+R de Jinamar y Vecindario. Evita la GC-1 entre los km 8 y 15 de 16:00 a 23:00.
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-titulo" style="margin-top: 40px;">Viernes 12 de junio</div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">10:00</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🙏 Misa multitudinaria – Arguineguín</div>
+        <div class="tl-lugar">Arguineguín, Mogán</div>
+        <div class="tl-detalle">
+          El acto central de la visita. Misa al aire libre con una asistencia esperada de hasta 46.000 personas. La GC-1 sur estará cortada desde Pasito Blanco hasta Arguineguín desde las 07:00.
+          <br><br>
+          💡 <strong>Consejo:</strong> Acceso EXCLUSIVAMENTE en guagua especial M1-ESP desde Maspalomas y San Bartolomé de Tirajana. No hay aparcamiento en la zona.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">16:00</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-medio">Impacto medio</span>
+        <div class="tl-evento">✈️ Despedida – Aeropuerto de Gran Canaria</div>
+        <div class="tl-lugar">Aeropuerto Internacional de Gran Canaria, Telde</div>
+        <div class="tl-detalle">
+          Ceremonia de despedida y partida del Papa León XIV hacia Roma. Las restricciones aéreas se levantan progresivamente tras el despegue.
+          <br><br>
+          💡 <strong>Consejo:</strong> Espera tráfico de retorno muy intenso en la GC-1 norte. Si puedes, retrasa tu viaje de vuelta hasta las 19:00.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══ HISTORIA ══════════════════════════════════════════════════ -->
+<section id="historia">
+  <div class="reveal">
+    <p class="seccion-label">Contexto histórico</p>
+    <h2 class="seccion-titulo">Visitas papales a España</h2>
+    <p class="seccion-sub">La visita de Francisco a Canarias es la primera vez que un Papa pisa tierra canaria en toda la historia.</p>
+  </div>
+
+  <div class="historia-intro reveal">
+    Desde la visita histórica de Juan Pablo II en 1982 — la primera de un Papa a España en la era moderna — los pontífices han visitado el país en seis ocasiones. Francisco lleva el total a siete, y convierte a las Islas Canarias en destino papal por primera vez, añadiendo una dimensión histórica inédita a esta visita.
+  </div>
+
+  <div class="visitas-grid reveal">
+
+    <!-- Juan Pablo II -->
+    <div class="papa-card">
+      <div class="papa-header">
+        <div class="papa-inicial" style="background:#FEF3C7;color:#92400E;">JP</div>
+        <div>
+          <div class="papa-nombre">Juan Pablo II</div>
+          <div class="papa-años">Papa · 1978–2005 · 4 visitas a España</div>
+        </div>
+      </div>
+      <div class="papa-visitas">
+        <div class="visita-item">
+          <div class="visita-año">1982</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Madrid, Barcelona, Ávila, Sevilla…</div>
+            <div class="visita-nota">Primera visita papal a España moderna · 10 ciudades</div>
+          </div>
+          <div class="visita-asistentes">~3,5M</div>
+        </div>
+        <div class="visita-item">
+          <div class="visita-año">1984</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Zaragoza</div>
+            <div class="visita-nota">Jornada Mundial de la Juventud</div>
+          </div>
+          <div class="visita-asistentes">~500K</div>
+        </div>
+        <div class="visita-item">
+          <div class="visita-año">1989</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Santiago de Compostela</div>
+            <div class="visita-nota">JMJ · Año Santo Compostelano</div>
+          </div>
+          <div class="visita-asistentes">~1,5M</div>
+        </div>
+        <div class="visita-item">
+          <div class="visita-año">2003</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Madrid</div>
+            <div class="visita-nota">Beatificación de 4 españoles</div>
+          </div>
+          <div class="visita-asistentes">~1M</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benedicto XVI -->
+    <div class="papa-card">
+      <div class="papa-header">
+        <div class="papa-inicial" style="background:#DBEAFE;color:#1E40AF;">B</div>
+        <div>
+          <div class="papa-nombre">Benedicto XVI</div>
+          <div class="papa-años">Papa · 2005–2013 · 2 visitas a España</div>
+        </div>
+      </div>
+      <div class="papa-visitas">
+        <div class="visita-item">
+          <div class="visita-año">2006</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Valencia</div>
+            <div class="visita-nota">V Encuentro Mundial de las Familias</div>
+          </div>
+          <div class="visita-asistentes">~1,2M</div>
+        </div>
+        <div class="visita-item">
+          <div class="visita-año">2010</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Barcelona, Santiago de Compostela</div>
+            <div class="visita-nota">Consagración Sagrada Família</div>
+          </div>
+          <div class="visita-asistentes">~600K</div>
+        </div>
+        <div class="visita-item">
+          <div class="visita-año">2011</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Madrid</div>
+            <div class="visita-nota">JMJ Madrid · La visita más masiva reciente</div>
+          </div>
+          <div class="visita-asistentes">~2M</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Francisco -->
+    <div class="papa-card" style="border-color: var(--oro);">
+      <div class="papa-header" style="background: linear-gradient(135deg, #FAF7F0, #FEF9EC);">
+        <div class="papa-inicial" style="background:var(--oro);color:var(--carbón);">F</div>
+        <div>
+          <div class="papa-nombre">Francisco</div>
+          <div class="papa-años">Papa · 2013–presente · 2 visitas a España</div>
+        </div>
+      </div>
+      <div class="papa-visitas">
+        <div class="visita-item">
+          <div class="visita-año">2023</div>
+          <div class="visita-info">
+            <div class="visita-lugar">Lisboa (JMJ) → Barcelona</div>
+            <div class="visita-nota">JMJ Lisboa + Sagrada Família</div>
+          </div>
+          <div class="visita-asistentes">~1,5M</div>
+        </div>
+        <div class="visita-item" style="background:linear-gradient(135deg,rgba(201,168,76,0.05),transparent);border-radius:6px;padding-left:8px;">
+          <div class="visita-año" style="color:var(--rojo);">2026</div>
+          <div class="visita-info">
+            <div class="visita-lugar" style="color:var(--rojo);">🌴 Gran Canaria · PRIMERA VEZ</div>
+            <div class="visita-nota">Primera visita papal a Canarias en la historia</div>
+          </div>
+          <div class="visita-asistentes" style="font-weight:500;">+46K</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Comparativa de asistencia -->
+  <div class="comparativa reveal">
+    <div class="comp-titulo">Asistencia estimada comparada</div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa">Juan Pablo II · Madrid 1982</span>
+        <span class="barra-num">3.500.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:#D97706;" data-width="100%"></div>
+      </div>
+    </div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa">Benedicto XVI · JMJ Madrid 2011</span>
+        <span class="barra-num">2.000.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:#1D4ED8;" data-width="57%"></div>
+      </div>
+    </div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa">Juan Pablo II · JMJ Santiago 1989</span>
+        <span class="barra-num">1.500.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:#D97706;" data-width="43%"></div>
+      </div>
+    </div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa">Benedicto XVI · Valencia 2006</span>
+        <span class="barra-num">1.500.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:#059669;" data-width="43%"></div>
+      </div>
+    </div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa">Benedicto XVI · Valencia 2006</span>
+        <span class="barra-num">1.46.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:#1D4ED8;" data-width="34%"></div>
+      </div>
+    </div>
+
+    <div class="barra-item">
+      <div class="barra-header">
+        <span class="barra-papa" style="color:var(--rojo);font-weight:600;">🌴 León XIV · Estadio GC 2026 (preinscritos) (est.)</span>
+        <span class="barra-num">46.000 personas</span>
+      </div>
+      <div class="barra-track">
+        <div class="barra-fill" style="background:var(--oro);" data-width="6%"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA MAPA ═══════════════════════════════════════════════════ -->
+<div class="mapa-cta">
+  <h2>¿Cómo afecta a tu movilidad?</h2>
+  <p>Consulta el mapa interactivo con cortes de tráfico, guaguas especiales y consejos en tiempo real.</p>
+  <a href="index.html" class="btn-mapa">Abrir mapa interactivo →</a>
+</div>
+
+<footer>
+  Papa en Canarias 2026 · Datos estimados basados en fuentes oficiales del Cabildo de Gran Canaria y la Diócesis de Canarias · Proyecto de datos abiertos
+</footer>
+
+<script>
+// ── Toggle cronología ──
+function toggleItem(el) {
+  const estaActivo = el.classList.contains('activo');
+  document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('activo'));
+  if (!estaActivo) el.classList.add('activo');
+}
+
+// ── Animación contadores ──
+function animarContador(el) {
+  const target = parseInt(el.dataset.target);
+  const duracion = 1800;
+  const inicio = performance.now();
+  function step(ts) {
+    const progreso = Math.min((ts - inicio) / duracion, 1);
+    const ease = 1 - Math.pow(1 - progreso, 3);
+    const valor = Math.round(ease * target);
+    el.textContent = valor >= 1000
+      ? valor.toLocaleString('es-ES')
+      : valor;
+    if (progreso < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── Animación barras ──
+function animarBarras() {
+  document.querySelectorAll('.barra-fill').forEach(b => {
+    b.style.width = b.dataset.width;
+  });
+}
+
+// ── Intersection Observer ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+
+    // Contadores
+    entry.target.querySelectorAll('[data-target]').forEach(animarContador);
+
+    // Barras
+    if (entry.target.querySelector('.barra-fill')) animarBarras();
+
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Scroll suave para nav ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))
+      ?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
