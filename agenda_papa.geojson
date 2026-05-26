@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "agenda_papa",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "A02", "evento": "Recepción oficial en el Cabildo de Gran Canaria", "fecha": "2026-06-11", "hora_inicio": "12:00", "hora_fin": "13:30", "lugar_texto": "Cabildo de Gran Canaria, Las Palmas de Gran Canaria", "tipo_impacto": "Alto", "consejo_movilidad": "El centro histórico de Vegueta estará cortado. Aparca en Triana y accede a pie.", "icono_color": "red", "lat": 28.1076642, "lon": -15.4198529 }, "geometry": { "type": "Point", "coordinates": [ -15.4198529, 28.1076642 ] } },
+{ "type": "Feature", "properties": { "id": "A03", "evento": "Visita a la Catedral de Santa Ana", "fecha": "2026-06-11", "hora_inicio": "13:30", "hora_fin": "15:00", "lugar_texto": "Catedral de Santa Ana, Vegueta, Las Palmas de Gran Canaria", "tipo_impacto": "Alto", "consejo_movilidad": "Zona peatonal total en Vegueta. Intercambiadores provisionales en Pérez Galdós.", "icono_color": "red", "lat": 28.1008296, "lon": -15.4147333 }, "geometry": { "type": "Point", "coordinates": [ -15.4147333, 28.1008296 ] } },
+{ "type": "Feature", "properties": { "id": "A04", "evento": "Acto multitudinario – Estadio de Gran Canaria", "fecha": "2026-06-11", "hora_inicio": "18:00", "hora_fin": "21:00", "lugar_texto": "Estadio de Gran Canaria, Las Palmas de Gran Canaria", "tipo_impacto": "Alto", "consejo_movilidad": "Usa las líneas especiales de Guaguas desde los P+R de Vecindario, Jinamar y El Doctoral. Evita la GC-1 entre los km 8 y 15.", "icono_color": "red", "lat": 28.1002336, "lon": -15.4567247 }, "geometry": { "type": "Point", "coordinates": [ -15.4567247, 28.1002336 ] } },
+{ "type": "Feature", "properties": { "id": "A05", "evento": "Misa masiva en Arguineguín", "fecha": "2026-06-12", "hora_inicio": "10:00", "hora_fin": "13:00", "lugar_texto": "Arguineguín, Mogán, Gran Canaria", "tipo_impacto": "Alto", "consejo_movilidad": "GC-1 sur cortada desde Pasito Blanco. Acceso SOLO en guagua especial desde Maspalomas y San Bartolomé de Tirajana.", "icono_color": "red", "lat": 27.7577416, "lon": -15.6821475 }, "geometry": { "type": "Point", "coordinates": [ -15.6821475, 27.7577416 ] } }
+]
+}

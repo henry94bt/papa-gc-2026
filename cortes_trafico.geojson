@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "cortes_trafico",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "C01", "descripcion": "Cierre GC-1 – Nudo Tafira hasta Aeropuerto", "fecha": "2026-06-11", "hora_inicio": "08:00", "hora_fin": "13:00", "tipo_impacto": "Alto", "via": "GC-1", "tramo": "km 3 – km 10" }, "geometry": { "type": "LineString", "coordinates": [ [ -15.461, 27.96 ], [ -15.438, 27.94 ], [ -15.419, 27.927 ] ] } },
+{ "type": "Feature", "properties": { "id": "C02", "descripcion": "Cierre GC-1 sur – Pasito Blanco a Arguineguín", "fecha": "2026-06-12", "hora_inicio": "07:00", "hora_fin": "15:00", "tipo_impacto": "Alto", "via": "GC-1", "tramo": "km 68 – km 75" }, "geometry": { "type": "LineString", "coordinates": [ [ -15.69, 27.74 ], [ -15.717, 27.76 ], [ -15.738, 27.78 ] ] } },
+{ "type": "Feature", "properties": { "id": "C03", "descripcion": "Cierre Vegueta – Centro histórico", "fecha": "2026-06-11", "hora_inicio": "10:00", "hora_fin": "16:00", "tipo_impacto": "Alto", "via": "Vegueta", "tramo": "Calle Colón / Dr. Chil / Mendizábal" }, "geometry": { "type": "LineString", "coordinates": [ [ -15.415, 28.098 ], [ -15.417, 28.102 ], [ -15.42, 28.1 ] ] } }
+]
+}
