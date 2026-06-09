@@ -3,22 +3,6 @@
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta property="og:title" content="🕊️ Papa en Canarias 2026 – Mapa de impacto en la movilidad">
-<meta property="og:description"
-      content="¿Cómo afecta la visita papal a tu desplazamiento en Gran Canaria? Cortes de tráfico, guaguas especiales y consejos en tiempo real.">
-<meta property="og:image" content="https://TU_USUARIO.github.io/papa-gc-2026/preview.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<style>
-  /* Mobile: ocultar título si la pantalla es muy pequeña */
-  @media (max-width: 500px) {
-    #titulo-mapa { top: 6px; padding: 7px 14px; }
-    #titulo-mapa p:first-child { font-size: 13px; }
-    #titulo-mapa p:last-child { display: none; }
-    #leyenda { font-size: 11px; padding: 9px 12px; bottom: 20px; }
-  }
-</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -33,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_6e2f3d137425539fd22f6daa342ac285 {
+                #map_36718b1390ff7bb14d7beca1f993bd33 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -69,84 +53,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-textpath@1.2.3/leaflet.textpath.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
-    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
 </head>
 <body>
     
     
-<div id="titulo-mapa" style="
-    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
-    z-index: 9999; pointer-events: none;
-    background: rgba(255,255,255,0.95);
-    border-radius: 10px; padding: 10px 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    text-align: center; max-width: 90vw;
-">
-  <p style="margin:0; font-size:16px; font-weight:700; color:#222;
-             font-family: -apple-system, sans-serif;">
-    🕊️ Papa en Canarias 2026 · Impacto en la movilidad
-  </p>
-  <p style="margin:3px 0 0; font-size:12px; color:#666;">
-    Gran Canaria · 11–12 junio 2026 · Toca los marcadores para ver consejos
-  </p>
+<div id="titulo-mapa" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;background:rgba(255,255,255,0.95);border-radius:10px;padding:10px 20px;box-shadow:0 2px 12px rgba(0,0,0,0.15);text-align:center;max-width:90vw;">
+  <p style="margin:0;font-size:16px;font-weight:700;color:#222;font-family:-apple-system,sans-serif;">🕊️ León XIV en Canarias 2026 · Impacto en la movilidad</p>
+  <p style="margin:3px 0 0;font-size:12px;color:#666;">Gran Canaria (11 jun) · Tenerife (12 jun) · Toca los marcadores</p>
 </div>
     
-<div id="leyenda" style="
-    position: fixed; bottom: 30px; right: 12px; z-index: 9999;
-    background: rgba(255,255,255,0.95); border-radius: 10px;
-    padding: 12px 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    font-family: -apple-system, sans-serif; font-size: 12px; color: #333;
-    min-width: 170px;
-">
-  <p style="margin:0 0 8px; font-weight:700; font-size:13px;">Leyenda</p>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
-    <span style="width:14px;height:14px;border-radius:50%;background:#E24B4A;
-                 border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);
-                 flex-shrink:0;"></span>
-    Impacto Alto
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
-    <span style="width:14px;height:14px;border-radius:50%;background:#EF9F27;
-                 border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);
-                 flex-shrink:0;"></span>
-    Impacto Medio
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
-    <span style="display:inline-block;width:28px;height:5px;
-                 background:#E24B4A;border-radius:3px;flex-shrink:0;"></span>
-    Corte de tráfico
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
-    <span style="width:14px;height:14px;border-radius:3px;background:#185FA5;
-                 border:2px solid #fff;flex-shrink:0;"></span>
-    Intercambiador P+R
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <span style="width:14px;height:14px;border-radius:3px;background:#A32D2D;
-                 border:2px solid #fff;flex-shrink:0;"></span>
-    Parada inhabilitada
-  </div>
+<div id="leyenda" style="position:fixed;bottom:30px;right:12px;z-index:9999;background:rgba(255,255,255,0.95);border-radius:10px;padding:12px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.15);font-family:-apple-system,sans-serif;font-size:12px;color:#333;min-width:175px;">
+  <p style="margin:0 0 8px;font-weight:700;font-size:13px;">Leyenda</p>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="width:14px;height:14px;border-radius:50%;background:#E24B4A;border:2px solid #fff;flex-shrink:0;"></span>Acto · impacto alto</div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="width:14px;height:14px;border-radius:50%;background:#EF9F27;border:2px solid #fff;flex-shrink:0;"></span>Acto · impacto medio</div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="display:inline-block;width:28px;height:5px;background:#E24B4A;border-radius:3px;flex-shrink:0;"></span>Corte de tráfico</div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="width:14px;height:14px;border-radius:3px;background:#185FA5;border:2px solid #fff;flex-shrink:0;"></span>Lanzadera de guagua</div>
+  <div style="display:flex;align-items:center;gap:8px;"><span style="width:14px;height:14px;border-radius:3px;background:#2E7D32;border:2px solid #fff;flex-shrink:0;"></span>Aparcamiento (mín. 4 pers.)</div>
 </div>
     
-            <div class="folium-map" id="map_6e2f3d137425539fd22f6daa342ac285" ></div>
+            <div class="folium-map" id="map_36718b1390ff7bb14d7beca1f993bd33" ></div>
         
 </body>
 <script>
     
     
-            var map_6e2f3d137425539fd22f6daa342ac285 = L.map(
-                "map_6e2f3d137425539fd22f6daa342ac285",
+            var map_36718b1390ff7bb14d7beca1f993bd33 = L.map(
+                "map_36718b1390ff7bb14d7beca1f993bd33",
                 {
-                    center: [27.92, -15.54],
+                    center: [28.1, -15.8],
                     crs: L.CRS.EPSG3857,
                     ...{
-  "zoom": 10,
+  "zoom": 9,
   "zoomControl": true,
   "preferCanvas": true,
 }
@@ -158,7 +99,7 @@
 
         
     
-            var tile_layer_0a51a810862aec2af1e3cc4f9ec87823 = L.tileLayer(
+            var tile_layer_11c598c883b4650dc324a1d24547ea1c = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -175,95 +116,50 @@
             );
         
     
-            tile_layer_0a51a810862aec2af1e3cc4f9ec87823.addTo(map_6e2f3d137425539fd22f6daa342ac285);
+            tile_layer_11c598c883b4650dc324a1d24547ea1c.addTo(map_36718b1390ff7bb14d7beca1f993bd33);
         
     
-            var marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45 = L.markerClusterGroup(
+            var marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2 = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_4b8b5eed99382f1dbb4cefbaa90c7c23 = L.marker(
-                [28.1076642, -15.4198529],
-                {
-}
-            ).addTo(marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45);
-        
-    
-            var div_icon_46baa1f01cc4cb02be3f64e0d0ae731a = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:32px; height:32px; border-radius:50%;\n            background:#E24B4A; border:3px solid #fff;\n            box-shadow:0 2px 6px rgba(0,0,0,0.3);\n            display:flex; align-items:center; justify-content:center;\n            font-size:14px;\n        \"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e\n        ",
-  "iconSize": [32, 32],
-  "iconAnchor": [16, 16],
-  "className": "empty",
-});
-        
-    
-        var popup_e06ab5e66e58068b8f73cf1d5e2ff750 = L.popup({
-  "maxWidth": 310,
-});
-
-        
-            
-                var i_frame_286185df4e9014fcf42d386d45e643e5 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI4MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE4KTsKICAgICI+CiAgICAgIDwhLS0gQ2FiZWNlcmEgZGUgY29sb3Igc2Vnw7puIGltcGFjdG8gLS0+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I0UyNEI0QTsgcGFkZGluZzogMTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9IgogICAgICAgICAgICBkaXNwbGF5OmlubGluZS1ibG9jazsgYmFja2dyb3VuZDpyZ2JhKDI1NSwyNTUsMjU1LDAuMjUpOwogICAgICAgICAgICBjb2xvcjojZmZmOyBmb250LXNpemU6MTBweDsgZm9udC13ZWlnaHQ6NjAwOyBsZXR0ZXItc3BhY2luZzouOHB4OwogICAgICAgICAgICBwYWRkaW5nOjJweCA3cHg7IGJvcmRlci1yYWRpdXM6MjBweDsgdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOwogICAgICAgICI+QWx0bzwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7IGNvbG9yOiNmZmY7IGZvbnQtc2l6ZToxNHB4OyBmb250LXdlaWdodDo2MDA7CiAgICAgICAgICAgICAgICAgIGxpbmUtaGVpZ2h0OjEuMzsiPlJlY2VwY2nDs24gb2ZpY2lhbCBlbiBlbCBDYWJpbGRvIGRlIEdyYW4gQ2FuYXJpYTwvcD4KICAgICAgPC9kaXY+CiAgICAgIDwhLS0gQ3VlcnBvIC0tPgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7IHBhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4OyBmb250LXNpemU6MTJweDsgY29sb3I6IzU1NTsiPgogICAgICAgICAg8J+ThSAyMDI2LTA2LTExIDAwOjAwOjAwICZuYnNwO8K3Jm5ic3A7IPCflZAgMTI6MDAg4oCTIDEzOjMwCiAgICAgICAgPC9wPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDhweDsgZm9udC1zaXplOjEycHg7IGNvbG9yOiMzMzM7Ij4KICAgICAgICAgIPCfk40gQ2FiaWxkbyBkZSBHcmFuIENhbmFyaWEsIExhcyBQYWxtYXMgZGUgR3JhbiBDYW5hcmlhCiAgICAgICAgPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2Y1ZjVmNTsgYm9yZGVyLWxlZnQ6M3B4IHNvbGlkICNFMjRCNEE7CiAgICAgICAgICAgICAgICAgICAgcGFkZGluZzo3cHggMTBweDsgYm9yZGVyLXJhZGl1czowIDZweCA2cHggMDsgZm9udC1zaXplOjEycHg7IGNvbG9yOiM0NDQ7Ij4KICAgICAgICAgIPCfkqEgPHN0cm9uZz5Db25zZWpvOjwvc3Ryb25nPiBFbCBjZW50cm8gaGlzdMOzcmljbyBkZSBWZWd1ZXRhIGVzdGFyw6EgY29ydGFkby4gQXBhcmNhIGVuIFRyaWFuYSB5IGFjY2VkZSBhIHBpZS4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIA==" width="300" style="border:none !important;" height="210"></iframe>`)[0];
-                popup_e06ab5e66e58068b8f73cf1d5e2ff750.setContent(i_frame_286185df4e9014fcf42d386d45e643e5);
-            
-        
-
-        marker_4b8b5eed99382f1dbb4cefbaa90c7c23.bindPopup(popup_e06ab5e66e58068b8f73cf1d5e2ff750)
-        ;
-
-        
-    
-    
-            marker_4b8b5eed99382f1dbb4cefbaa90c7c23.bindTooltip(
-                `<div>
-                     <b>Recepción oficial en el Cabildo de Gran Canaria</b><br>12:00 – 13:30
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_4b8b5eed99382f1dbb4cefbaa90c7c23.setIcon(div_icon_46baa1f01cc4cb02be3f64e0d0ae731a);
-            
-    
-            var marker_6dd7c906709da40551e66519d777d72c = L.marker(
+            var marker_9dd6d2b37a0d5751b90d07df912fb3e6 = L.marker(
                 [28.1008296, -15.4147333],
                 {
 }
-            ).addTo(marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45);
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
         
     
-            var div_icon_175a241d883fa23e167993b884c40802 = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:32px; height:32px; border-radius:50%;\n            background:#E24B4A; border:3px solid #fff;\n            box-shadow:0 2px 6px rgba(0,0,0,0.3);\n            display:flex; align-items:center; justify-content:center;\n            font-size:14px;\n        \"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e\n        ",
+            var div_icon_cff002e7cc6d0ca9a2bace85d84fd420 = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#E24B4A;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
   "iconSize": [32, 32],
   "iconAnchor": [16, 16],
   "className": "empty",
 });
         
     
-        var popup_ced58e3120fd5abec5268d3797ccb013 = L.popup({
+        var popup_20e3023bf1f9e41894541eec22ad5f7e = L.popup({
   "maxWidth": 310,
 });
 
         
             
-                var i_frame_623388b1634fb177e70dfef0b862354f = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI4MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE4KTsKICAgICI+CiAgICAgIDwhLS0gQ2FiZWNlcmEgZGUgY29sb3Igc2Vnw7puIGltcGFjdG8gLS0+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I0UyNEI0QTsgcGFkZGluZzogMTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9IgogICAgICAgICAgICBkaXNwbGF5OmlubGluZS1ibG9jazsgYmFja2dyb3VuZDpyZ2JhKDI1NSwyNTUsMjU1LDAuMjUpOwogICAgICAgICAgICBjb2xvcjojZmZmOyBmb250LXNpemU6MTBweDsgZm9udC13ZWlnaHQ6NjAwOyBsZXR0ZXItc3BhY2luZzouOHB4OwogICAgICAgICAgICBwYWRkaW5nOjJweCA3cHg7IGJvcmRlci1yYWRpdXM6MjBweDsgdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOwogICAgICAgICI+QWx0bzwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7IGNvbG9yOiNmZmY7IGZvbnQtc2l6ZToxNHB4OyBmb250LXdlaWdodDo2MDA7CiAgICAgICAgICAgICAgICAgIGxpbmUtaGVpZ2h0OjEuMzsiPlZpc2l0YSBhIGxhIENhdGVkcmFsIGRlIFNhbnRhIEFuYTwvcD4KICAgICAgPC9kaXY+CiAgICAgIDwhLS0gQ3VlcnBvIC0tPgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7IHBhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4OyBmb250LXNpemU6MTJweDsgY29sb3I6IzU1NTsiPgogICAgICAgICAg8J+ThSAyMDI2LTA2LTExIDAwOjAwOjAwICZuYnNwO8K3Jm5ic3A7IPCflZAgMTM6MzAg4oCTIDE1OjAwCiAgICAgICAgPC9wPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDhweDsgZm9udC1zaXplOjEycHg7IGNvbG9yOiMzMzM7Ij4KICAgICAgICAgIPCfk40gQ2F0ZWRyYWwgZGUgU2FudGEgQW5hLCBWZWd1ZXRhLCBMYXMgUGFsbWFzIGRlIEdyYW4gQ2FuYXJpYQogICAgICAgIDwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmNWY1ZjU7IGJvcmRlci1sZWZ0OjNweCBzb2xpZCAjRTI0QjRBOwogICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6N3B4IDEwcHg7IGJvcmRlci1yYWRpdXM6MCA2cHggNnB4IDA7IGZvbnQtc2l6ZToxMnB4OyBjb2xvcjojNDQ0OyI+CiAgICAgICAgICDwn5KhIDxzdHJvbmc+Q29uc2Vqbzo8L3N0cm9uZz4gWm9uYSBwZWF0b25hbCB0b3RhbCBlbiBWZWd1ZXRhLiBJbnRlcmNhbWJpYWRvcmVzIHByb3Zpc2lvbmFsZXMgZW4gUMOpcmV6IEdhbGTDs3MuCiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA=" width="300" style="border:none !important;" height="210"></iframe>`)[0];
-                popup_ced58e3120fd5abec5268d3797ccb013.setContent(i_frame_623388b1634fb177e70dfef0b862354f);
+                var i_frame_2ebb2e96b8b51f147b3dda8eec48c520 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRTI0QjRBO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+QWx0byDCtyBHcmFuIENhbmFyaWE8L3NwYW4+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjo2cHggMCAwO2NvbG9yOiNmZmY7Zm9udC1zaXplOjE0cHg7Zm9udC13ZWlnaHQ6NjAwO2xpbmUtaGVpZ2h0OjEuMzsiPkVuY3VlbnRybyBjb24gZWwgY2xlcm8gZW4gbGEgQ2F0ZWRyYWwgZGUgU2FudGEgQW5hPC9wPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZmZmO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiM1NTU7Ij7wn5OFIDIwMjYtMDYtMTEgMDA6MDA6MDAgJm5ic3A7wrcmbmJzcDsg8J+VkCAxMzozMCDigJMgMTQ6MzA8L3A+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgOHB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiMzMzM7Ij7wn5ONIENhdGVkcmFsIGRlIFNhbnRhIEFuYSwgVmVndWV0YSwgTGFzIFBhbG1hcyBkZSBHcmFuIENhbmFyaWE8L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZjVmNWY1O2JvcmRlci1sZWZ0OjNweCBzb2xpZCAjRTI0QjRBO3BhZGRpbmc6N3B4IDEwcHg7Ym9yZGVyLXJhZGl1czowIDZweCA2cHggMDtmb250LXNpemU6MTJweDtjb2xvcjojNDQ0OyI+8J+SoSA8c3Ryb25nPkNvbnNlam86PC9zdHJvbmc+IEVuY3VlbnRybyBjb24gb2Jpc3Bvcywgc2FjZXJkb3RlcywgcmVsaWdpb3NvcyB5IGFnZW50ZXMgZGUgcGFzdG9yYWwuIFZlZ3VldGEgcGVhdG9uYWxpemFkYTogYXBhcmNhIGVuIFRyaWFuYSB5IGFjY2VkZSBhIHBpZS48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_20e3023bf1f9e41894541eec22ad5f7e.setContent(i_frame_2ebb2e96b8b51f147b3dda8eec48c520);
             
         
 
-        marker_6dd7c906709da40551e66519d777d72c.bindPopup(popup_ced58e3120fd5abec5268d3797ccb013)
+        marker_9dd6d2b37a0d5751b90d07df912fb3e6.bindPopup(popup_20e3023bf1f9e41894541eec22ad5f7e)
         ;
 
         
     
     
-            marker_6dd7c906709da40551e66519d777d72c.bindTooltip(
+            marker_9dd6d2b37a0d5751b90d07df912fb3e6.bindTooltip(
                 `<div>
-                     <b>Visita a la Catedral de Santa Ana</b><br>13:30 – 15:00
+                     <b>Encuentro con el clero en la Catedral de Santa Ana</b><br>13:30–14:30
                  </div>`,
                 {
   "sticky": true,
@@ -271,44 +167,44 @@
             );
         
     
-                marker_6dd7c906709da40551e66519d777d72c.setIcon(div_icon_175a241d883fa23e167993b884c40802);
+                marker_9dd6d2b37a0d5751b90d07df912fb3e6.setIcon(div_icon_cff002e7cc6d0ca9a2bace85d84fd420);
             
     
-            var marker_9b9fed7e255964780a8bfc8bff98332a = L.marker(
+            var marker_82dceb3b6239168a487575884d00d71f = L.marker(
                 [28.1002336, -15.4567247],
                 {
 }
-            ).addTo(marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45);
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
         
     
-            var div_icon_01803f4458b8b1dfae939e77a0866339 = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:32px; height:32px; border-radius:50%;\n            background:#E24B4A; border:3px solid #fff;\n            box-shadow:0 2px 6px rgba(0,0,0,0.3);\n            display:flex; align-items:center; justify-content:center;\n            font-size:14px;\n        \"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e\n        ",
+            var div_icon_30761a5248fb66c62b2701a206a0a3d4 = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#EF9F27;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
   "iconSize": [32, 32],
   "iconAnchor": [16, 16],
   "className": "empty",
 });
         
     
-        var popup_192404cc9191ad5709279d870f8a3906 = L.popup({
+        var popup_f30f488c0a2e8da5a0326860ec6af238 = L.popup({
   "maxWidth": 310,
 });
 
         
             
-                var i_frame_6b0608e783d33df362ea00833444ffd2 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI4MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE4KTsKICAgICI+CiAgICAgIDwhLS0gQ2FiZWNlcmEgZGUgY29sb3Igc2Vnw7puIGltcGFjdG8gLS0+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I0UyNEI0QTsgcGFkZGluZzogMTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9IgogICAgICAgICAgICBkaXNwbGF5OmlubGluZS1ibG9jazsgYmFja2dyb3VuZDpyZ2JhKDI1NSwyNTUsMjU1LDAuMjUpOwogICAgICAgICAgICBjb2xvcjojZmZmOyBmb250LXNpemU6MTBweDsgZm9udC13ZWlnaHQ6NjAwOyBsZXR0ZXItc3BhY2luZzouOHB4OwogICAgICAgICAgICBwYWRkaW5nOjJweCA3cHg7IGJvcmRlci1yYWRpdXM6MjBweDsgdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOwogICAgICAgICI+QWx0bzwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7IGNvbG9yOiNmZmY7IGZvbnQtc2l6ZToxNHB4OyBmb250LXdlaWdodDo2MDA7CiAgICAgICAgICAgICAgICAgIGxpbmUtaGVpZ2h0OjEuMzsiPkFjdG8gbXVsdGl0dWRpbmFyaW8g4oCTIEVzdGFkaW8gZGUgR3JhbiBDYW5hcmlhPC9wPgogICAgICA8L2Rpdj4KICAgICAgPCEtLSBDdWVycG8gLS0+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2ZmZjsgcGFkZGluZzoxMHB4IDE0cHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA2cHg7IGZvbnQtc2l6ZToxMnB4OyBjb2xvcjojNTU1OyI+CiAgICAgICAgICDwn5OFIDIwMjYtMDYtMTEgMDA6MDA6MDAgJm5ic3A7wrcmbmJzcDsg8J+VkCAxODowMCDigJMgMjE6MDAKICAgICAgICA8L3A+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgOHB4OyBmb250LXNpemU6MTJweDsgY29sb3I6IzMzMzsiPgogICAgICAgICAg8J+TjSBFc3RhZGlvIGRlIEdyYW4gQ2FuYXJpYSwgTGFzIFBhbG1hcyBkZSBHcmFuIENhbmFyaWEKICAgICAgICA8L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZjVmNWY1OyBib3JkZXItbGVmdDozcHggc29saWQgI0UyNEI0QTsKICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOjdweCAxMHB4OyBib3JkZXItcmFkaXVzOjAgNnB4IDZweCAwOyBmb250LXNpemU6MTJweDsgY29sb3I6IzQ0NDsiPgogICAgICAgICAg8J+SoSA8c3Ryb25nPkNvbnNlam86PC9zdHJvbmc+IFVzYSBsYXMgbMOtbmVhcyBlc3BlY2lhbGVzIGRlIEd1YWd1YXMgZGVzZGUgbG9zIFArUiBkZSBWZWNpbmRhcmlvLCBKaW5hbWFyIHkgRWwgRG9jdG9yYWwuIEV2aXRhIGxhIEdDLTEgZW50cmUgbG9zIGttIDggeSAxNS4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIA==" width="300" style="border:none !important;" height="210"></iframe>`)[0];
-                popup_192404cc9191ad5709279d870f8a3906.setContent(i_frame_6b0608e783d33df362ea00833444ffd2);
+                var i_frame_5f304ce61100ab0c78bfbc8be6ec9091 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRUY5RjI3O3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+TWVkaW8gwrcgR3JhbiBDYW5hcmlhPC9zcGFuPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46NnB4IDAgMDtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxNHB4O2ZvbnQtd2VpZ2h0OjYwMDtsaW5lLWhlaWdodDoxLjM7Ij5BcGVydHVyYSBkZSBsYSBGYW4gWm9uZSDigJQgQW5leG8gZGVsIEVzdGFkaW88L3A+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzoxMHB4IDE0cHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA2cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMSAwMDowMDowMCAmbmJzcDvCtyZuYnNwOyDwn5WQIDE0OjAwIOKAkyAxODozMDwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA4cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzMzMzsiPvCfk40gRXN0YWRpbyBkZSBHcmFuIENhbmFyaWEsIExhcyBQYWxtYXMgZGUgR3JhbiBDYW5hcmlhPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2Y1ZjVmNTtib3JkZXItbGVmdDozcHggc29saWQgI0VGOUYyNztwYWRkaW5nOjdweCAxMHB4O2JvcmRlci1yYWRpdXM6MCA2cHggNnB4IDA7Zm9udC1zaXplOjEycHg7Y29sb3I6IzQ0NDsiPvCfkqEgPHN0cm9uZz5Db25zZWpvOjwvc3Ryb25nPiBBY3RpdmlkYWRlcyBjdWx0dXJhbGVzIHkgbcO6c2ljYSBjYW5hcmlhIGFudGVzIGRlIGxhIG1pc2EgKExvcyBHb2Zpb25lcywgQ3Jpc3RpbmEgUmFtb3MsIFllcmF5IFJvZHLDrWd1ZXrigKYpLiBVc2EgbGFzIGxhbnphZGVyYXMgZGUgZ3VhZ3VhcyBhIFNpZXRlIFBhbG1hcy48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_f30f488c0a2e8da5a0326860ec6af238.setContent(i_frame_5f304ce61100ab0c78bfbc8be6ec9091);
             
         
 
-        marker_9b9fed7e255964780a8bfc8bff98332a.bindPopup(popup_192404cc9191ad5709279d870f8a3906)
+        marker_82dceb3b6239168a487575884d00d71f.bindPopup(popup_f30f488c0a2e8da5a0326860ec6af238)
         ;
 
         
     
     
-            marker_9b9fed7e255964780a8bfc8bff98332a.bindTooltip(
+            marker_82dceb3b6239168a487575884d00d71f.bindTooltip(
                 `<div>
-                     <b>Acto multitudinario – Estadio de Gran Canaria</b><br>18:00 – 21:00
+                     <b>Apertura de la Fan Zone — Anexo del Estadio</b><br>14:00–18:30
                  </div>`,
                 {
   "sticky": true,
@@ -316,44 +212,44 @@
             );
         
     
-                marker_9b9fed7e255964780a8bfc8bff98332a.setIcon(div_icon_01803f4458b8b1dfae939e77a0866339);
+                marker_82dceb3b6239168a487575884d00d71f.setIcon(div_icon_30761a5248fb66c62b2701a206a0a3d4);
             
     
-            var marker_d59f28cb8362385a39bf4f8988ed6a4d = L.marker(
-                [27.7577416, -15.6821475],
+            var marker_ac829ce850822e2ab8ea564bd63ea36a = L.marker(
+                [28.1002336, -15.4567247],
                 {
 }
-            ).addTo(marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45);
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
         
     
-            var div_icon_6591020e733b891012b72c305980b7c8 = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:32px; height:32px; border-radius:50%;\n            background:#E24B4A; border:3px solid #fff;\n            box-shadow:0 2px 6px rgba(0,0,0,0.3);\n            display:flex; align-items:center; justify-content:center;\n            font-size:14px;\n        \"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e\n        ",
+            var div_icon_91353f10ab7f7f22ceb0d1582a099fd8 = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#E24B4A;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
   "iconSize": [32, 32],
   "iconAnchor": [16, 16],
   "className": "empty",
 });
         
     
-        var popup_851875d523cb73c4ab103c3a3f8901dd = L.popup({
+        var popup_75056efa6f300d9781211643d459f336 = L.popup({
   "maxWidth": 310,
 });
 
         
             
-                var i_frame_ef409962054aab5b999967927cc64021 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI4MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE4KTsKICAgICI+CiAgICAgIDwhLS0gQ2FiZWNlcmEgZGUgY29sb3Igc2Vnw7puIGltcGFjdG8gLS0+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I0UyNEI0QTsgcGFkZGluZzogMTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9IgogICAgICAgICAgICBkaXNwbGF5OmlubGluZS1ibG9jazsgYmFja2dyb3VuZDpyZ2JhKDI1NSwyNTUsMjU1LDAuMjUpOwogICAgICAgICAgICBjb2xvcjojZmZmOyBmb250LXNpemU6MTBweDsgZm9udC13ZWlnaHQ6NjAwOyBsZXR0ZXItc3BhY2luZzouOHB4OwogICAgICAgICAgICBwYWRkaW5nOjJweCA3cHg7IGJvcmRlci1yYWRpdXM6MjBweDsgdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOwogICAgICAgICI+QWx0bzwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7IGNvbG9yOiNmZmY7IGZvbnQtc2l6ZToxNHB4OyBmb250LXdlaWdodDo2MDA7CiAgICAgICAgICAgICAgICAgIGxpbmUtaGVpZ2h0OjEuMzsiPk1pc2EgbWFzaXZhIGVuIEFyZ3VpbmVndcOtbjwvcD4KICAgICAgPC9kaXY+CiAgICAgIDwhLS0gQ3VlcnBvIC0tPgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7IHBhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4OyBmb250LXNpemU6MTJweDsgY29sb3I6IzU1NTsiPgogICAgICAgICAg8J+ThSAyMDI2LTA2LTEyIDAwOjAwOjAwICZuYnNwO8K3Jm5ic3A7IPCflZAgMTA6MDAg4oCTIDEzOjAwCiAgICAgICAgPC9wPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDhweDsgZm9udC1zaXplOjEycHg7IGNvbG9yOiMzMzM7Ij4KICAgICAgICAgIPCfk40gQXJndWluZWd1w61uLCBNb2fDoW4sIEdyYW4gQ2FuYXJpYQogICAgICAgIDwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmNWY1ZjU7IGJvcmRlci1sZWZ0OjNweCBzb2xpZCAjRTI0QjRBOwogICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6N3B4IDEwcHg7IGJvcmRlci1yYWRpdXM6MCA2cHggNnB4IDA7IGZvbnQtc2l6ZToxMnB4OyBjb2xvcjojNDQ0OyI+CiAgICAgICAgICDwn5KhIDxzdHJvbmc+Q29uc2Vqbzo8L3N0cm9uZz4gR0MtMSBzdXIgY29ydGFkYSBkZXNkZSBQYXNpdG8gQmxhbmNvLiBBY2Nlc28gU09MTyBlbiBndWFndWEgZXNwZWNpYWwgZGVzZGUgTWFzcGFsb21hcyB5IFNhbiBCYXJ0b2xvbcOpIGRlIFRpcmFqYW5hLgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICAg" width="300" style="border:none !important;" height="210"></iframe>`)[0];
-                popup_851875d523cb73c4ab103c3a3f8901dd.setContent(i_frame_ef409962054aab5b999967927cc64021);
+                var i_frame_46290ab6ea63670e24f06bd14b123c27 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRTI0QjRBO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+QWx0byDCtyBHcmFuIENhbmFyaWE8L3NwYW4+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjo2cHggMCAwO2NvbG9yOiNmZmY7Zm9udC1zaXplOjE0cHg7Zm9udC13ZWlnaHQ6NjAwO2xpbmUtaGVpZ2h0OjEuMzsiPk1pc2EgbXVsdGl0dWRpbmFyaWEgZW4gZWwgRXN0YWRpbyBkZSBHcmFuIENhbmFyaWE8L3A+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzoxMHB4IDE0cHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA2cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMSAwMDowMDowMCAmbmJzcDvCtyZuYnNwOyDwn5WQIDE4OjMwIOKAkyAyMDowMDwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA4cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzMzMzsiPvCfk40gRXN0YWRpbyBkZSBHcmFuIENhbmFyaWEsIExhcyBQYWxtYXMgZGUgR3JhbiBDYW5hcmlhPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2Y1ZjVmNTtib3JkZXItbGVmdDozcHggc29saWQgI0UyNEI0QTtwYWRkaW5nOjdweCAxMHB4O2JvcmRlci1yYWRpdXM6MCA2cHggNnB4IDA7Zm9udC1zaXplOjEycHg7Y29sb3I6IzQ0NDsiPvCfkqEgPHN0cm9uZz5Db25zZWpvOjwvc3Ryb25nPiBBY3RvIGNlbnRyYWw6ICs0Ni4wMDAgcHJlaW5zY3JpdG9zLiBNw7pzaWNhIGRlIGxhIE9ycXVlc3RhIEZpbGFybcOzbmljYSBkZSBHcmFuIENhbmFyaWEgeSBzdSBDb3JvLiBTaWV0ZSBQYWxtYXMgY2VycmFkYSBhbCB0csOhZmljbyBkZXNkZSBsYXMgMDk6MDAgaGFzdGEgbWVkaWFub2NoZS4gVmUgZW4gZ3VhZ3VhIG8gbGFuemFkZXJhLjwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2Pg==" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_75056efa6f300d9781211643d459f336.setContent(i_frame_46290ab6ea63670e24f06bd14b123c27);
             
         
 
-        marker_d59f28cb8362385a39bf4f8988ed6a4d.bindPopup(popup_851875d523cb73c4ab103c3a3f8901dd)
+        marker_ac829ce850822e2ab8ea564bd63ea36a.bindPopup(popup_75056efa6f300d9781211643d459f336)
         ;
 
         
     
     
-            marker_d59f28cb8362385a39bf4f8988ed6a4d.bindTooltip(
+            marker_ac829ce850822e2ab8ea564bd63ea36a.bindTooltip(
                 `<div>
-                     <b>Misa masiva en Arguineguín</b><br>10:00 – 13:00
+                     <b>Misa multitudinaria en el Estadio de Gran Canaria</b><br>18:30–20:00
                  </div>`,
                 {
   "sticky": true,
@@ -361,44 +257,224 @@
             );
         
     
-                marker_d59f28cb8362385a39bf4f8988ed6a4d.setIcon(div_icon_6591020e733b891012b72c305980b7c8);
+                marker_ac829ce850822e2ab8ea564bd63ea36a.setIcon(div_icon_91353f10ab7f7f22ceb0d1582a099fd8);
             
     
-            marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45.addTo(map_6e2f3d137425539fd22f6daa342ac285);
+            var marker_dae5839534e5d65848a390e538844b0c = L.marker(
+                [28.4827575, -16.3412247],
+                {
+}
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
         
     
-            var feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f = L.featureGroup(
+            var div_icon_52cf090a5283ca282a601d1b50a0e99f = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#E24B4A;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
+  "iconSize": [32, 32],
+  "iconAnchor": [16, 16],
+  "className": "empty",
+});
+        
+    
+        var popup_d71f49d22431df5af934ca6f1372c10d = L.popup({
+  "maxWidth": 310,
+});
+
+        
+            
+                var i_frame_539573ecac07d3ec2ec52fc8e4fe9f1d = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRTI0QjRBO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+QWx0byDCtyBUZW5lcmlmZTwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7Y29sb3I6I2ZmZjtmb250LXNpemU6MTRweDtmb250LXdlaWdodDo2MDA7bGluZS1oZWlnaHQ6MS4zOyI+TGxlZ2FkYSBhbCBBZXJvcHVlcnRvIFRlbmVyaWZlIE5vcnRlPC9wPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZmZmO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiM1NTU7Ij7wn5OFIDIwMjYtMDYtMTIgMDA6MDA6MDAgJm5ic3A7wrcmbmJzcDsg8J+VkCAwOToxMCDigJMgMDk6MzA8L3A+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgOHB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiMzMzM7Ij7wn5ONIEFlcm9wdWVydG8gVGVuZXJpZmUgTm9ydGUsIExhIExhZ3VuYSwgVGVuZXJpZmU8L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZjVmNWY1O2JvcmRlci1sZWZ0OjNweCBzb2xpZCAjRTI0QjRBO3BhZGRpbmc6N3B4IDEwcHg7Ym9yZGVyLXJhZGl1czowIDZweCA2cHggMDtmb250LXNpemU6MTJweDtjb2xvcjojNDQ0OyI+8J+SoSA8c3Ryb25nPkNvbnNlam86PC9zdHJvbmc+IEluaWNpbyBkZSBsYSBqb3JuYWRhIGVuIFRlbmVyaWZlLiBMYSBURi01IHRlbmRyw6EgcmVzdHJpY2Npb25lcyBkZXNkZSBwcmltZXJhIGhvcmEuIFVzYSBlbCB0cmFudsOtYSBTYW50YSBDcnV64oCTTGEgTGFndW5hLjwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2Pg==" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_d71f49d22431df5af934ca6f1372c10d.setContent(i_frame_539573ecac07d3ec2ec52fc8e4fe9f1d);
+            
+        
+
+        marker_dae5839534e5d65848a390e538844b0c.bindPopup(popup_d71f49d22431df5af934ca6f1372c10d)
+        ;
+
+        
+    
+    
+            marker_dae5839534e5d65848a390e538844b0c.bindTooltip(
+                `<div>
+                     <b>Llegada al Aeropuerto Tenerife Norte</b><br>09:10–09:30
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dae5839534e5d65848a390e538844b0c.setIcon(div_icon_52cf090a5283ca282a601d1b50a0e99f);
+            
+    
+            var marker_af2f51f51959fad62ced9143593dd5f5 = L.marker(
+                [28.4928366, -16.3127676],
+                {
+}
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
+        
+    
+            var div_icon_4a54062c921727dba3b1bae456d113bd = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#E24B4A;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
+  "iconSize": [32, 32],
+  "iconAnchor": [16, 16],
+  "className": "empty",
+});
+        
+    
+        var popup_07cb3b5c12dfdcd4b9afb63f5ab75c9e = L.popup({
+  "maxWidth": 310,
+});
+
+        
+            
+                var i_frame_c06511f918ff15e4e67f4aa6c67bd3bd = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRTI0QjRBO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+QWx0byDCtyBUZW5lcmlmZTwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7Y29sb3I6I2ZmZjtmb250LXNpemU6MTRweDtmb250LXdlaWdodDo2MDA7bGluZS1oZWlnaHQ6MS4zOyI+RW5jdWVudHJvIGNvbiBvcmdhbml6YWNpb25lcyBkZSBpbnRlZ3JhY2nDs248L3A+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzoxMHB4IDE0cHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA2cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMiAwMDowMDowMCAmbmJzcDvCtyZuYnNwOyDwn5WQIDEwOjEwIOKAkyAxMTozMDwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA4cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6IzMzMzsiPvCfk40gUGxhemEgZGVsIENyaXN0bywgTGEgTGFndW5hLCBUZW5lcmlmZTwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmNWY1ZjU7Ym9yZGVyLWxlZnQ6M3B4IHNvbGlkICNFMjRCNEE7cGFkZGluZzo3cHggMTBweDtib3JkZXItcmFkaXVzOjAgNnB4IDZweCAwO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiM0NDQ7Ij7wn5KhIDxzdHJvbmc+Q29uc2Vqbzo8L3N0cm9uZz4gQ2FzY28gaGlzdMOzcmljbyBkZSBMYSBMYWd1bmEgY29ydGFkby4gQWNjZWRlIGVuIHRyYW52w61hIChwYXJhZGEgTGEgVHJpbmlkYWQgLyBMYSBMYWd1bmEpLjwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2Pg==" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_07cb3b5c12dfdcd4b9afb63f5ab75c9e.setContent(i_frame_c06511f918ff15e4e67f4aa6c67bd3bd);
+            
+        
+
+        marker_af2f51f51959fad62ced9143593dd5f5.bindPopup(popup_07cb3b5c12dfdcd4b9afb63f5ab75c9e)
+        ;
+
+        
+    
+    
+            marker_af2f51f51959fad62ced9143593dd5f5.bindTooltip(
+                `<div>
+                     <b>Encuentro con organizaciones de integración</b><br>10:10–11:30
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_af2f51f51959fad62ced9143593dd5f5.setIcon(div_icon_4a54062c921727dba3b1bae456d113bd);
+            
+    
+            var marker_3707ea41e9e67553b4d8836a4a37a839 = L.marker(
+                [28.4919087, -16.2177802],
+                {
+}
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
+        
+    
+            var div_icon_5e91c14f0425233fd04ae903a4bdeda4 = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#E24B4A;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
+  "iconSize": [32, 32],
+  "iconAnchor": [16, 16],
+  "className": "empty",
+});
+        
+    
+        var popup_b5dd2a5b752377a6459adcb718f93dc7 = L.popup({
+  "maxWidth": 310,
+});
+
+        
+            
+                var i_frame_12f9bf25433b1613a2677671273486d9 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRTI0QjRBO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+QWx0byDCtyBUZW5lcmlmZTwvc3Bhbj4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjZweCAwIDA7Y29sb3I6I2ZmZjtmb250LXNpemU6MTRweDtmb250LXdlaWdodDo2MDA7bGluZS1oZWlnaHQ6MS4zOyI+U2FudGEgTWlzYSBlbiBlbCBQdWVydG8gZGUgU2FudGEgQ3J1ejwvcD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2ZmZjtwYWRkaW5nOjEwcHggMTRweDsiPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDZweDtmb250LXNpemU6MTJweDtjb2xvcjojNTU1OyI+8J+ThSAyMDI2LTA2LTEyIDAwOjAwOjAwICZuYnNwO8K3Jm5ic3A7IPCflZAgMTI6MTUg4oCTIDE0OjAwPC9wPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDhweDtmb250LXNpemU6MTJweDtjb2xvcjojMzMzOyI+8J+TjSBQdWVydG8gZGUgU2FudGEgQ3J1eiBkZSBUZW5lcmlmZTwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmNWY1ZjU7Ym9yZGVyLWxlZnQ6M3B4IHNvbGlkICNFMjRCNEE7cGFkZGluZzo3cHggMTBweDtib3JkZXItcmFkaXVzOjAgNnB4IDZweCAwO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiM0NDQ7Ij7wn5KhIDxzdHJvbmc+Q29uc2Vqbzo8L3N0cm9uZz4gTWlzYSBhbnRlIGxhIFZpcmdlbiBkZSBDYW5kZWxhcmlhLCBwYXRyb25hIGRlbCBhcmNoaXBpw6lsYWdvLiBTYW50YSBDcnV6IGNvbiBjb3J0ZXMgaW1wb3J0YW50ZXM7IHVzYSBlbCB0cmFudsOtYSBvIGd1YWd1YXMgZXNwZWNpYWxlcy48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_b5dd2a5b752377a6459adcb718f93dc7.setContent(i_frame_12f9bf25433b1613a2677671273486d9);
+            
+        
+
+        marker_3707ea41e9e67553b4d8836a4a37a839.bindPopup(popup_b5dd2a5b752377a6459adcb718f93dc7)
+        ;
+
+        
+    
+    
+            marker_3707ea41e9e67553b4d8836a4a37a839.bindTooltip(
+                `<div>
+                     <b>Santa Misa en el Puerto de Santa Cruz</b><br>12:15–14:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3707ea41e9e67553b4d8836a4a37a839.setIcon(div_icon_5e91c14f0425233fd04ae903a4bdeda4);
+            
+    
+            var marker_ed10390a5ea0512addaa8530bdd9126a = L.marker(
+                [28.4827575, -16.3412247],
+                {
+}
+            ).addTo(marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2);
+        
+    
+            var div_icon_f218560ae9cb1c20595f5df6be5d85fa = L.divIcon({
+  "html": "\u003cdiv style=\"width:32px;height:32px;border-radius:50%;background:#EF9F27;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;\"\u003e\ud83d\udd4a\ufe0f\u003c/div\u003e",
+  "iconSize": [32, 32],
+  "iconAnchor": [16, 16],
+  "className": "empty",
+});
+        
+    
+        var popup_e6fa0bf8624d70daabc1bba3c5d00958 = L.popup({
+  "maxWidth": 310,
+});
+
+        
+            
+                var i_frame_4becc9d15e21d6a13be16bf99dce77da = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI4MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xOCk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRUY5RjI3O3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHNwYW4gc3R5bGU9ImRpc3BsYXk6aW5saW5lLWJsb2NrO2JhY2tncm91bmQ6cmdiYSgyNTUsMjU1LDI1NSwwLjI1KTtjb2xvcjojZmZmO2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjYwMDtsZXR0ZXItc3BhY2luZzouOHB4O3BhZGRpbmc6MnB4IDdweDtib3JkZXItcmFkaXVzOjIwcHg7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyI+TWVkaW8gwrcgVGVuZXJpZmU8L3NwYW4+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjo2cHggMCAwO2NvbG9yOiNmZmY7Zm9udC1zaXplOjE0cHg7Zm9udC13ZWlnaHQ6NjAwO2xpbmUtaGVpZ2h0OjEuMzsiPkNlcmVtb25pYSBkZSBkZXNwZWRpZGEg4oCUIFRlbmVyaWZlIE5vcnRlPC9wPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZmZmO3BhZGRpbmc6MTBweCAxNHB4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNnB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiM1NTU7Ij7wn5OFIDIwMjYtMDYtMTIgMDA6MDA6MDAgJm5ic3A7wrcmbmJzcDsg8J+VkCAxNDozMCDigJMgMTU6MDA8L3A+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgOHB4O2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiMzMzM7Ij7wn5ONIEFlcm9wdWVydG8gVGVuZXJpZmUgTm9ydGUsIExhIExhZ3VuYSwgVGVuZXJpZmU8L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZjVmNWY1O2JvcmRlci1sZWZ0OjNweCBzb2xpZCAjRUY5RjI3O3BhZGRpbmc6N3B4IDEwcHg7Ym9yZGVyLXJhZGl1czowIDZweCA2cHggMDtmb250LXNpemU6MTJweDtjb2xvcjojNDQ0OyI+8J+SoSA8c3Ryb25nPkNvbnNlam86PC9zdHJvbmc+IERlc3BlZGlkYSBkZWwgUmV5IEZlbGlwZSBWSSB5IHNhbGlkYSBoYWNpYSBSb21hIGEgbGFzIDE1OjAwLiBUcsOhZmljbyBkZSByZXRvcm5vIGludGVuc28gZW4gbGEgVEYtNSBwb3IgbGEgdGFyZGUuPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+" width="300" style="border:none !important;" height="230"></iframe>`)[0];
+                popup_e6fa0bf8624d70daabc1bba3c5d00958.setContent(i_frame_4becc9d15e21d6a13be16bf99dce77da);
+            
+        
+
+        marker_ed10390a5ea0512addaa8530bdd9126a.bindPopup(popup_e6fa0bf8624d70daabc1bba3c5d00958)
+        ;
+
+        
+    
+    
+            marker_ed10390a5ea0512addaa8530bdd9126a.bindTooltip(
+                `<div>
+                     <b>Ceremonia de despedida — Tenerife Norte</b><br>14:30–15:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed10390a5ea0512addaa8530bdd9126a.setIcon(div_icon_f218560ae9cb1c20595f5df6be5d85fa);
+            
+    
+            marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2.addTo(map_36718b1390ff7bb14d7beca1f993bd33);
+        
+    
+            var feature_group_b27a626fb5327f16b3d71ea30914c090 = L.featureGroup(
                 {
 }
             );
         
     
-            var poly_line_635701e02c71549d302619af8cf41436 = L.polyline(
-                [[27.96, -15.461], [27.94, -15.438], [27.927, -15.419]],
+            var poly_line_288c1f635e846c7498fe35bed2a51af2 = L.polyline(
+                [[27.99, -15.43], [28.03, -15.42], [28.07, -15.416]],
                 {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#E24B4A", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
-            ).addTo(feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f);
+            ).addTo(feature_group_b27a626fb5327f16b3d71ea30914c090);
         
     
-        var popup_a71a4d2f01a916e4a4004af0adf7a606 = L.popup({
+        var popup_f0cc7d633c405313b033da8db60c155b = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_d3626374a8fd798b9c6096fe5ebaccc3 = $(`<div id="html_d3626374a8fd798b9c6096fe5ebaccc3" style="width: 100.0%; height: 100.0%;"><b>Cierre GC-1 – Nudo Tafira hasta Aeropuerto</b><br>📅 2026-06-11 00:00:00 · 08:00–13:00<br>🛣️ GC-1 · km 3 – km 10</div>`)[0];
-                popup_a71a4d2f01a916e4a4004af0adf7a606.setContent(html_d3626374a8fd798b9c6096fe5ebaccc3);
+                var html_8fc72e04a53fc2bb2764f1bd3fbad49f = $(`<div id="html_8fc72e04a53fc2bb2764f1bd3fbad49f" style="width: 100.0%; height: 100.0%;"><b>Corte GC-1 dirección Las Palmas</b><br>📅 2026-06-11 00:00:00 · 12:00–13:30<br>🛣️ GC-1 · Acceso a LPGC</div>`)[0];
+                popup_f0cc7d633c405313b033da8db60c155b.setContent(html_8fc72e04a53fc2bb2764f1bd3fbad49f);
             
         
 
-        poly_line_635701e02c71549d302619af8cf41436.bindPopup(popup_a71a4d2f01a916e4a4004af0adf7a606)
+        poly_line_288c1f635e846c7498fe35bed2a51af2.bindPopup(popup_f0cc7d633c405313b033da8db60c155b)
         ;
 
         
     
     
-            poly_line_635701e02c71549d302619af8cf41436.bindTooltip(
+            poly_line_288c1f635e846c7498fe35bed2a51af2.bindTooltip(
                 `<div>
-                     <b>Cierre GC-1 – Nudo Tafira hasta Aeropuerto</b><br>08:00–13:00
+                     <b>Corte GC-1 dirección Las Palmas</b><br>12:00–13:30
                  </div>`,
                 {
   "sticky": true,
@@ -406,49 +482,32 @@
             );
         
     
-            poly_line_787eaad0943bcbc98c1e08e5beee9c4a.setText(
-                "\u25ba",
-                {
-  "repeat": true,
-  "center": false,
-  "below": false,
-  "offset": 14,
-  "orientation": 0,
-  "attributes": {
-  "fill": "#E24B4A",
-  "font-size": "12",
-  "font-weight": "bold",
-},
-}
-            );
-        
-    
-            var poly_line_877b1e3dc09e3f81752e20f4c70d07da = L.polyline(
-                [[27.74, -15.69], [27.76, -15.717], [27.78, -15.738]],
+            var poly_line_2d439e62f264c23aa85411ce65230e76 = L.polyline(
+                [[28.075, -15.46], [28.09, -15.445], [28.1, -15.435]],
                 {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#E24B4A", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
-            ).addTo(feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f);
+            ).addTo(feature_group_b27a626fb5327f16b3d71ea30914c090);
         
     
-        var popup_d2794c3d5f1ab75522be9aa6bf822ffd = L.popup({
+        var popup_ff000e19c7d13cf21d6bd68b1d1fb275 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_10623a0a61f06d8cbe03e742da8a7f2c = $(`<div id="html_10623a0a61f06d8cbe03e742da8a7f2c" style="width: 100.0%; height: 100.0%;"><b>Cierre GC-1 sur – Pasito Blanco a Arguineguín</b><br>📅 2026-06-12 00:00:00 · 07:00–15:00<br>🛣️ GC-1 · km 68 – km 75</div>`)[0];
-                popup_d2794c3d5f1ab75522be9aa6bf822ffd.setContent(html_10623a0a61f06d8cbe03e742da8a7f2c);
+                var html_519370bbb7b71139e5d472942aa2dc79 = $(`<div id="html_519370bbb7b71139e5d472942aa2dc79" style="width: 100.0%; height: 100.0%;"><b>Corte GC-3 dirección Las Palmas</b><br>📅 2026-06-11 00:00:00 · 17:30–18:30<br>🛣️ GC-3 · Circunvalación → LPGC</div>`)[0];
+                popup_ff000e19c7d13cf21d6bd68b1d1fb275.setContent(html_519370bbb7b71139e5d472942aa2dc79);
             
         
 
-        poly_line_877b1e3dc09e3f81752e20f4c70d07da.bindPopup(popup_d2794c3d5f1ab75522be9aa6bf822ffd)
+        poly_line_2d439e62f264c23aa85411ce65230e76.bindPopup(popup_ff000e19c7d13cf21d6bd68b1d1fb275)
         ;
 
         
     
     
-            poly_line_877b1e3dc09e3f81752e20f4c70d07da.bindTooltip(
+            poly_line_2d439e62f264c23aa85411ce65230e76.bindTooltip(
                 `<div>
-                     <b>Cierre GC-1 sur – Pasito Blanco a Arguineguín</b><br>07:00–15:00
+                     <b>Corte GC-3 dirección Las Palmas</b><br>17:30–18:30
                  </div>`,
                 {
   "sticky": true,
@@ -456,49 +515,32 @@
             );
         
     
-            poly_line_d8c01afa38110519d515217d5549d261.setText(
-                "\u25ba",
-                {
-  "repeat": true,
-  "center": false,
-  "below": false,
-  "offset": 14,
-  "orientation": 0,
-  "attributes": {
-  "fill": "#E24B4A",
-  "font-size": "12",
-  "font-weight": "bold",
-},
-}
-            );
-        
-    
-            var poly_line_d5fd3065f1186d5dc87898ad67e4c4d0 = L.polyline(
-                [[28.098, -15.415], [28.102, -15.417], [28.1, -15.42]],
+            var poly_line_8f24ec706e23649330d5fef98f999b5d = L.polyline(
+                [[28.097, -15.458], [28.1, -15.456], [28.102, -15.453], [28.099, -15.456]],
                 {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#E24B4A", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
-            ).addTo(feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f);
+            ).addTo(feature_group_b27a626fb5327f16b3d71ea30914c090);
         
     
-        var popup_0025962554911c500a2c50106a6062c1 = L.popup({
+        var popup_3a741f5adc62b2838bf6580584155692 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_b6fd7de87e596956100ca0ad2906b68f = $(`<div id="html_b6fd7de87e596956100ca0ad2906b68f" style="width: 100.0%; height: 100.0%;"><b>Cierre Vegueta – Centro histórico</b><br>📅 2026-06-11 00:00:00 · 10:00–16:00<br>🛣️ Vegueta · Calle Colón / Dr. Chil / Mendizábal</div>`)[0];
-                popup_0025962554911c500a2c50106a6062c1.setContent(html_b6fd7de87e596956100ca0ad2906b68f);
+                var html_acd8ab4ff563e1830ff9222b0d5e4f13 = $(`<div id="html_acd8ab4ff563e1830ff9222b0d5e4f13" style="width: 100.0%; height: 100.0%;"><b>Cierre total de Siete Palmas (entorno del Estadio)</b><br>📅 2026-06-11 00:00:00 · 09:00–23:59<br>🛣️ Siete Palmas · Entorno Estadio de Gran Canaria</div>`)[0];
+                popup_3a741f5adc62b2838bf6580584155692.setContent(html_acd8ab4ff563e1830ff9222b0d5e4f13);
             
         
 
-        poly_line_d5fd3065f1186d5dc87898ad67e4c4d0.bindPopup(popup_0025962554911c500a2c50106a6062c1)
+        poly_line_8f24ec706e23649330d5fef98f999b5d.bindPopup(popup_3a741f5adc62b2838bf6580584155692)
         ;
 
         
     
     
-            poly_line_d5fd3065f1186d5dc87898ad67e4c4d0.bindTooltip(
+            poly_line_8f24ec706e23649330d5fef98f999b5d.bindTooltip(
                 `<div>
-                     <b>Cierre Vegueta – Centro histórico</b><br>10:00–16:00
+                     <b>Cierre total de Siete Palmas (entorno del Estadio)</b><br>09:00–23:59
                  </div>`,
                 {
   "sticky": true,
@@ -506,67 +548,50 @@
             );
         
     
-            poly_line_8dda7b8f4b8c60fa00e7667e36bcf040.setText(
-                "\u25ba",
-                {
-  "repeat": true,
-  "center": false,
-  "below": false,
-  "offset": 14,
-  "orientation": 0,
-  "attributes": {
-  "fill": "#E24B4A",
-  "font-size": "12",
-  "font-weight": "bold",
-},
-}
-            );
+            feature_group_b27a626fb5327f16b3d71ea30914c090.addTo(map_36718b1390ff7bb14d7beca1f993bd33);
         
     
-            feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f.addTo(map_6e2f3d137425539fd22f6daa342ac285);
-        
-    
-            var feature_group_14733efd3845eb8df9e6c7c66ed736e0 = L.featureGroup(
+            var feature_group_89046b29e874b922f28b70462e285da6 = L.featureGroup(
                 {
 }
             );
         
     
-            var marker_89eb174c28e2a0f17fe71dfd72b27283 = L.marker(
-                [28.0379933, -15.4181846],
+            var marker_297c90167f9df1be09c05f406cd15c23 = L.marker(
+                [28.1302128, -15.4490139],
                 {
 }
-            ).addTo(feature_group_14733efd3845eb8df9e6c7c66ed736e0);
+            ).addTo(feature_group_89046b29e874b922f28b70462e285da6);
         
     
-            var div_icon_0fde83c76b322f21874605f67ebbec89 = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:28px; height:28px; border-radius:6px;\n            background:#185FA5; border:2px solid #fff;\n            box-shadow:0 2px 5px rgba(0,0,0,0.25);\n            display:flex; align-items:center; justify-content:center;\n            font-size:13px;\n        \"\u003e\ud83d\udd04\u003c/div\u003e\n        ",
+            var div_icon_ae908dd3e8282cb4cd3dce044e41b511 = L.divIcon({
+  "html": "\u003cdiv style=\"width:28px;height:28px;border-radius:6px;background:#185FA5;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;\"\u003e\ud83d\ude8c\u003c/div\u003e",
   "iconSize": [28, 28],
   "iconAnchor": [14, 14],
   "className": "empty",
 });
         
     
-        var popup_4760e62117375296632a7c6fec37206b = L.popup({
-  "maxWidth": 295,
+        var popup_6a2319aa5878866d8c588460196be53f = L.popup({
+  "maxWidth": 285,
 });
 
         
             
-                var i_frame_7ce123abe3e33e70946f9752b8f7e7dd = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI3MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE1KTsKICAgICI+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6IzE4NUZBNTsgcGFkZGluZzogOXB4IDEzcHg7Ij4KICAgICAgICA8c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjsgZm9udC1zaXplOjEzcHg7IGZvbnQtd2VpZ2h0OjYwMDsiPvCflIQgSW50ZXJjYW1iaWFkb3IgcHJvdmlzaW9uYWw8L3NwYW4+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7IHBhZGRpbmc6OXB4IDEzcHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA1cHg7IGZvbnQtc2l6ZToxMnB4OyBmb250LXdlaWdodDo2MDA7IGNvbG9yOiMyMjI7Ij5QK1IgSmluYW1hciDigJMgYWNjZXNvIGVzcGVjaWFsIGFsIEVzdGFkaW88L3A+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNXB4OyBmb250LXNpemU6MTFweDsgY29sb3I6IzU1NTsiPgogICAgICAgICAg8J+ThSAyMDI2LTA2LTExIDAwOjAwOjAwICZuYnNwO8K3Jm5ic3A7IDE0OjAwIOKAkyAyMzowMAogICAgICAgIDwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNlZWY0ZmI7IGJvcmRlci1sZWZ0OjNweCBzb2xpZCAjMTg1RkE1OwogICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6NnB4IDlweDsgYm9yZGVyLXJhZGl1czowIDVweCA1cHggMDsgZm9udC1zaXplOjExcHg7IGNvbG9yOiMzMzM7Ij4KICAgICAgICAgIEzDrW5lYXMgTDEtRVNQIHkgTDItRVNQIGNhZGEgMTAgbWluIGhhc3RhIEVzdGFkaW8KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIA==" width="285" style="border:none !important;" height="190"></iframe>`)[0];
-                popup_4760e62117375296632a7c6fec37206b.setContent(i_frame_7ce123abe3e33e70946f9752b8f7e7dd);
+                var i_frame_7f7a2e785ccd35d09ad0a83a99d29633 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI2MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xNSk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojMTg1RkE1O3BhZGRpbmc6OXB4IDEzcHg7Ij48c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjtmb250LXNpemU6MTNweDtmb250LXdlaWdodDo2MDA7Ij7wn5qMIExhbnphZGVyYSBHdWFndWFzIE11bmljaXBhbGVzPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzo5cHggMTNweDsiPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDVweDtmb250LXNpemU6MTJweDtmb250LXdlaWdodDo2MDA7Y29sb3I6IzIyMjsiPkxhbnphZGVyYSBhIFNpZXRlIFBhbG1hcyBkZXNkZSBlbCBBdWRpdG9yaW8gQWxmcmVkbyBLcmF1czwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA1cHg7Zm9udC1zaXplOjExcHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMSAwMDowMDowMCDCtyAxNDowMOKAkzIzOjAwPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2VlZjRmYjtib3JkZXItbGVmdDozcHggc29saWQgIzE4NUZBNTtwYWRkaW5nOjZweCA5cHg7Ym9yZGVyLXJhZGl1czowIDVweCA1cHggMDtmb250LXNpemU6MTFweDtjb2xvcjojMzMzOyI+U2VydmljaW8gZGlyZWN0byBhbCBFc3RhZGlvLiBGcmVjdWVuY2lhIHJlZm9yemFkYS48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="275" style="border:none !important;" height="170"></iframe>`)[0];
+                popup_6a2319aa5878866d8c588460196be53f.setContent(i_frame_7f7a2e785ccd35d09ad0a83a99d29633);
             
         
 
-        marker_89eb174c28e2a0f17fe71dfd72b27283.bindPopup(popup_4760e62117375296632a7c6fec37206b)
+        marker_297c90167f9df1be09c05f406cd15c23.bindPopup(popup_6a2319aa5878866d8c588460196be53f)
         ;
 
         
     
     
-            marker_89eb174c28e2a0f17fe71dfd72b27283.bindTooltip(
+            marker_297c90167f9df1be09c05f406cd15c23.bindTooltip(
                 `<div>
-                     <b>Intercambiador provisional</b><br>P+R Jinamar – acceso especial al Estadio…
+                     <b>Lanzadera</b><br>Lanzadera a Siete Palmas desde el Audito…
                  </div>`,
                 {
   "sticky": true,
@@ -574,44 +599,44 @@
             );
         
     
-                marker_89eb174c28e2a0f17fe71dfd72b27283.setIcon(div_icon_0fde83c76b322f21874605f67ebbec89);
+                marker_297c90167f9df1be09c05f406cd15c23.setIcon(div_icon_ae908dd3e8282cb4cd3dce044e41b511);
             
     
-            var marker_a79022f4c450e0a79cbb60f59c0ed776 = L.marker(
-                [27.7605085, -15.5675084],
+            var marker_aeb4b7eaab6670a16465bea1d5708499 = L.marker(
+                [28.140578, -15.4300388],
                 {
 }
-            ).addTo(feature_group_14733efd3845eb8df9e6c7c66ed736e0);
+            ).addTo(feature_group_89046b29e874b922f28b70462e285da6);
         
     
-            var div_icon_1fd711c8cd890c61571dcbba5e1abe34 = L.divIcon({
-  "html": "\n        \u003cdiv style=\"\n            width:28px; height:28px; border-radius:6px;\n            background:#185FA5; border:2px solid #fff;\n            box-shadow:0 2px 5px rgba(0,0,0,0.25);\n            display:flex; align-items:center; justify-content:center;\n            font-size:13px;\n        \"\u003e\ud83d\udd04\u003c/div\u003e\n        ",
+            var div_icon_b4601cdef934be8345b8b078653b7266 = L.divIcon({
+  "html": "\u003cdiv style=\"width:28px;height:28px;border-radius:6px;background:#185FA5;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;\"\u003e\ud83d\ude8c\u003c/div\u003e",
   "iconSize": [28, 28],
   "iconAnchor": [14, 14],
   "className": "empty",
 });
         
     
-        var popup_f99e8b2ed50795583821accf9b99e706 = L.popup({
-  "maxWidth": 295,
+        var popup_37e6a1316702a2fb66e01159d1dc2d39 = L.popup({
+  "maxWidth": 285,
 });
 
         
             
-                var i_frame_096022ddba7818de2f60845ac8303d42 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IgogICAgICAgIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7CiAgICAgICAgd2lkdGg6IDI3MHB4OyBwYWRkaW5nOiAwOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOwogICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDE2cHggcmdiYSgwLDAsMCwwLjE1KTsKICAgICI+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6IzE4NUZBNTsgcGFkZGluZzogOXB4IDEzcHg7Ij4KICAgICAgICA8c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjsgZm9udC1zaXplOjEzcHg7IGZvbnQtd2VpZ2h0OjYwMDsiPvCflIQgSW50ZXJjYW1iaWFkb3IgcHJvdmlzaW9uYWw8L3NwYW4+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7IHBhZGRpbmc6OXB4IDEzcHg7Ij4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA1cHg7IGZvbnQtc2l6ZToxMnB4OyBmb250LXdlaWdodDo2MDA7IGNvbG9yOiMyMjI7Ij5QK1IgTWFzcGFsb21hcyDigJMgYWNjZXNvIGVzcGVjaWFsIGEgQXJndWluZWd1w61uPC9wPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDVweDsgZm9udC1zaXplOjExcHg7IGNvbG9yOiM1NTU7Ij4KICAgICAgICAgIPCfk4UgMjAyNi0wNi0xMiAwMDowMDowMCAmbmJzcDvCtyZuYnNwOyAwNjowMCDigJMgMTY6MDAKICAgICAgICA8L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojZWVmNGZiOyBib3JkZXItbGVmdDozcHggc29saWQgIzE4NUZBNTsKICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOjZweCA5cHg7IGJvcmRlci1yYWRpdXM6MCA1cHggNXB4IDA7IGZvbnQtc2l6ZToxMXB4OyBjb2xvcjojMzMzOyI+CiAgICAgICAgICBMw61uZWEgTTEtRVNQIGNhZGEgMjAgbWluIGhhc3RhIHpvbmEgZGUgY2VsZWJyYWNpw7NuCiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA=" width="285" style="border:none !important;" height="190"></iframe>`)[0];
-                popup_f99e8b2ed50795583821accf9b99e706.setContent(i_frame_096022ddba7818de2f60845ac8303d42);
+                var i_frame_6b92249c55934ba7501647831d76f707 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI2MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xNSk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojMTg1RkE1O3BhZGRpbmc6OXB4IDEzcHg7Ij48c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjtmb250LXNpemU6MTNweDtmb250LXdlaWdodDo2MDA7Ij7wn5qMIExhbnphZGVyYSBHdWFndWFzIE11bmljaXBhbGVzPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzo5cHggMTNweDsiPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDVweDtmb250LXNpemU6MTJweDtmb250LXdlaWdodDo2MDA7Y29sb3I6IzIyMjsiPkxhbnphZGVyYSBhIFNpZXRlIFBhbG1hcyBkZXNkZSBTYW50YSBDYXRhbGluYTwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA1cHg7Zm9udC1zaXplOjExcHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMSAwMDowMDowMCDCtyAxNDowMOKAkzIzOjAwPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2VlZjRmYjtib3JkZXItbGVmdDozcHggc29saWQgIzE4NUZBNTtwYWRkaW5nOjZweCA5cHg7Ym9yZGVyLXJhZGl1czowIDVweCA1cHggMDtmb250LXNpemU6MTFweDtjb2xvcjojMzMzOyI+U2VydmljaW8gZGlyZWN0byBhbCBFc3RhZGlvLiBGcmVjdWVuY2lhIHJlZm9yemFkYS48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="275" style="border:none !important;" height="170"></iframe>`)[0];
+                popup_37e6a1316702a2fb66e01159d1dc2d39.setContent(i_frame_6b92249c55934ba7501647831d76f707);
             
         
 
-        marker_a79022f4c450e0a79cbb60f59c0ed776.bindPopup(popup_f99e8b2ed50795583821accf9b99e706)
+        marker_aeb4b7eaab6670a16465bea1d5708499.bindPopup(popup_37e6a1316702a2fb66e01159d1dc2d39)
         ;
 
         
     
     
-            marker_a79022f4c450e0a79cbb60f59c0ed776.bindTooltip(
+            marker_aeb4b7eaab6670a16465bea1d5708499.bindTooltip(
                 `<div>
-                     <b>Intercambiador provisional</b><br>P+R Maspalomas – acceso especial a Argui…
+                     <b>Lanzadera</b><br>Lanzadera a Siete Palmas desde Santa Cat…
                  </div>`,
                 {
   "sticky": true,
@@ -619,40 +644,185 @@
             );
         
     
-                marker_a79022f4c450e0a79cbb60f59c0ed776.setIcon(div_icon_1fd711c8cd890c61571dcbba5e1abe34);
+                marker_aeb4b7eaab6670a16465bea1d5708499.setIcon(div_icon_b4601cdef934be8345b8b078653b7266);
             
     
-            feature_group_14733efd3845eb8df9e6c7c66ed736e0.addTo(map_6e2f3d137425539fd22f6daa342ac285);
+            var marker_1c5363ee1f821e53cf134e4841d7bfb0 = L.marker(
+                [28.1080455, -15.416995],
+                {
+}
+            ).addTo(feature_group_89046b29e874b922f28b70462e285da6);
         
     
-            var layer_control_db3e7143141ec747b69e1ca7f8d3780f_layers = {
+            var div_icon_57ad004fee5f0c840bbd65ff10c091e3 = L.divIcon({
+  "html": "\u003cdiv style=\"width:28px;height:28px;border-radius:6px;background:#185FA5;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;\"\u003e\ud83d\ude8c\u003c/div\u003e",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_49c62bce269c44690e27d4e47655ccdb = L.popup({
+  "maxWidth": 285,
+});
+
+        
+            
+                var i_frame_17d70ce0d64c2ae8affc8669046c9a9b = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI2MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xNSk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojMTg1RkE1O3BhZGRpbmc6OXB4IDEzcHg7Ij48c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjtmb250LXNpemU6MTNweDtmb250LXdlaWdodDo2MDA7Ij7wn5qMIExhbnphZGVyYSBHdWFndWFzIE11bmljaXBhbGVzPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzo5cHggMTNweDsiPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46MCAwIDVweDtmb250LXNpemU6MTJweDtmb250LXdlaWdodDo2MDA7Y29sb3I6IzIyMjsiPkxhbnphZGVyYSBhIFNpZXRlIFBhbG1hcyBkZXNkZSBTYW4gVGVsbW8gLyBQw6lyZXogR2FsZMOzczwvcD4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOjAgMCA1cHg7Zm9udC1zaXplOjExcHg7Y29sb3I6IzU1NTsiPvCfk4UgMjAyNi0wNi0xMSAwMDowMDowMCDCtyAxNDowMOKAkzIzOjAwPC9wPgogICAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2VlZjRmYjtib3JkZXItbGVmdDozcHggc29saWQgIzE4NUZBNTtwYWRkaW5nOjZweCA5cHg7Ym9yZGVyLXJhZGl1czowIDVweCA1cHggMDtmb250LXNpemU6MTFweDtjb2xvcjojMzMzOyI+U2VydmljaW8gZGlyZWN0byBhbCBFc3RhZGlvLiBGcmVjdWVuY2lhIHJlZm9yemFkYS48L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="275" style="border:none !important;" height="170"></iframe>`)[0];
+                popup_49c62bce269c44690e27d4e47655ccdb.setContent(i_frame_17d70ce0d64c2ae8affc8669046c9a9b);
+            
+        
+
+        marker_1c5363ee1f821e53cf134e4841d7bfb0.bindPopup(popup_49c62bce269c44690e27d4e47655ccdb)
+        ;
+
+        
+    
+    
+            marker_1c5363ee1f821e53cf134e4841d7bfb0.bindTooltip(
+                `<div>
+                     <b>Lanzadera</b><br>Lanzadera a Siete Palmas desde San Telmo…
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c5363ee1f821e53cf134e4841d7bfb0.setIcon(div_icon_57ad004fee5f0c840bbd65ff10c091e3);
+            
+    
+            feature_group_89046b29e874b922f28b70462e285da6.addTo(map_36718b1390ff7bb14d7beca1f993bd33);
+        
+    
+            var feature_group_ee4e796247f0d357034e122c9e473316 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5b48b1a6c6b3d58547192baddb3bea6a = L.marker(
+                [28.1133726, -15.4489772],
+                {
+}
+            ).addTo(feature_group_ee4e796247f0d357034e122c9e473316);
+        
+    
+            var div_icon_2069eb40e7b4ad5751bffc8350b27c4d = L.divIcon({
+  "html": "\u003cdiv style=\"width:30px;height:30px;border-radius:6px;background:#2E7D32;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;\"\u003eP\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+        
+    
+        var popup_2e9792b663a6f97b2b22d6a569d1c8ca = L.popup({
+  "maxWidth": 275,
+});
+
+        
+            
+                var i_frame_ba04d102df4977f1559f6f9b150f430a = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI1MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xNSk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojMkU3RDMyO3BhZGRpbmc6OXB4IDEzcHg7Ij48c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjtmb250LXNpemU6MTNweDtmb250LXdlaWdodDo2MDA7Ij7wn4W/77iPIENlbnRybyBDb21lcmNpYWwgNyBQYWxtYXM8L3NwYW4+PC9kaXY+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2ZmZjtwYWRkaW5nOjlweCAxM3B4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNXB4O2ZvbnQtc2l6ZToyMHB4O2ZvbnQtd2VpZ2h0OjcwMDtjb2xvcjojMkU3RDMyOyI+MS41MDAgPHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMnB4O2ZvbnQtd2VpZ2h0OjQwMDtjb2xvcjojNTU1OyI+cGxhemFzPC9zcGFuPjwvcD4KICAgICAgICA8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kOiNGRkYzRTA7Ym9yZGVyLWxlZnQ6M3B4IHNvbGlkICNFRjZDMDA7cGFkZGluZzo2cHggOXB4O2JvcmRlci1yYWRpdXM6MCA1cHggNXB4IDA7Zm9udC1zaXplOjExcHg7Y29sb3I6IzVENDAzNzsiPuKaoO+4jyBNw61uaW1vIDQgb2N1cGFudGVzIHBvciB2ZWjDrWN1bG88L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4=" width="265" style="border:none !important;" height="150"></iframe>`)[0];
+                popup_2e9792b663a6f97b2b22d6a569d1c8ca.setContent(i_frame_ba04d102df4977f1559f6f9b150f430a);
+            
+        
+
+        marker_5b48b1a6c6b3d58547192baddb3bea6a.bindPopup(popup_2e9792b663a6f97b2b22d6a569d1c8ca)
+        ;
+
+        
+    
+    
+            marker_5b48b1a6c6b3d58547192baddb3bea6a.bindTooltip(
+                `<div>
+                     <b>Centro Comercial 7 Palmas</b><br>1500 plazas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5b48b1a6c6b3d58547192baddb3bea6a.setIcon(div_icon_2069eb40e7b4ad5751bffc8350b27c4d);
+            
+    
+            var marker_10c700f7fbf8e0fb95db7f7591068b95 = L.marker(
+                [28.1068748, -15.4456735],
+                {
+}
+            ).addTo(feature_group_ee4e796247f0d357034e122c9e473316);
+        
+    
+            var div_icon_a1c2db2c3103550fecdaf70dd4555612 = L.divIcon({
+  "html": "\u003cdiv style=\"width:30px;height:30px;border-radius:6px;background:#2E7D32;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;\"\u003eP\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+        
+    
+        var popup_8c7326ab59202ee964aa9d284dc4dd5c = L.popup({
+  "maxWidth": 275,
+});
+
+        
+            
+                var i_frame_67afc6bce6261b56db33a593701de571 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sJ1NlZ29lIFVJJyxzYW5zLXNlcmlmO3dpZHRoOjI1MHB4O2JvcmRlci1yYWRpdXM6MTBweDtvdmVyZmxvdzpoaWRkZW47Ym94LXNoYWRvdzowIDRweCAxNnB4IHJnYmEoMCwwLDAsMC4xNSk7Ij4KICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojMkU3RDMyO3BhZGRpbmc6OXB4IDEzcHg7Ij48c3BhbiBzdHlsZT0iY29sb3I6I2ZmZjtmb250LXNpemU6MTNweDtmb250LXdlaWdodDo2MDA7Ij7wn4W/77iPIEluZmVjYXI8L3NwYW4+PC9kaXY+CiAgICAgIDxkaXYgc3R5bGU9ImJhY2tncm91bmQ6I2ZmZjtwYWRkaW5nOjlweCAxM3B4OyI+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjowIDAgNXB4O2ZvbnQtc2l6ZToyMHB4O2ZvbnQtd2VpZ2h0OjcwMDtjb2xvcjojMkU3RDMyOyI+NDAwIDxzcGFuIHN0eWxlPSJmb250LXNpemU6MTJweDtmb250LXdlaWdodDo0MDA7Y29sb3I6IzU1NTsiPnBsYXphczwvc3Bhbj48L3A+CiAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDojRkZGM0UwO2JvcmRlci1sZWZ0OjNweCBzb2xpZCAjRUY2QzAwO3BhZGRpbmc6NnB4IDlweDtib3JkZXItcmFkaXVzOjAgNXB4IDVweCAwO2ZvbnQtc2l6ZToxMXB4O2NvbG9yOiM1RDQwMzc7Ij7imqDvuI8gTcOtbmltbyA0IG9jdXBhbnRlcyBwb3IgdmVow61jdWxvPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+" width="265" style="border:none !important;" height="150"></iframe>`)[0];
+                popup_8c7326ab59202ee964aa9d284dc4dd5c.setContent(i_frame_67afc6bce6261b56db33a593701de571);
+            
+        
+
+        marker_10c700f7fbf8e0fb95db7f7591068b95.bindPopup(popup_8c7326ab59202ee964aa9d284dc4dd5c)
+        ;
+
+        
+    
+    
+            marker_10c700f7fbf8e0fb95db7f7591068b95.bindTooltip(
+                `<div>
+                     <b>Infecar</b><br>400 plazas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_10c700f7fbf8e0fb95db7f7591068b95.setIcon(div_icon_a1c2db2c3103550fecdaf70dd4555612);
+            
+    
+            feature_group_ee4e796247f0d357034e122c9e473316.addTo(map_36718b1390ff7bb14d7beca1f993bd33);
+        
+    
+            var layer_control_ebe75ecfe91869187a1f79e194b1d992_layers = {
                 base_layers : {
-                    "cartodbpositron" : tile_layer_0a51a810862aec2af1e3cc4f9ec87823,
+                    "cartodbpositron" : tile_layer_11c598c883b4650dc324a1d24547ea1c,
                 },
                 overlays :  {
-                    "\ud83d\udd4a\ufe0f Agenda papal" : marker_cluster_9048b333d4a8a0bbb9cccfa3e5904b45,
-                    "\ud83d\udd34 Cortes de tr\u00e1fico" : feature_group_6e48bad7366bc32cbe41b07c4e1b9f8f,
-                    "\ud83d\ude8c Guaguas \u2013 impacto" : feature_group_14733efd3845eb8df9e6c7c66ed736e0,
+                    "\ud83d\udd4a\ufe0f Agenda papal" : marker_cluster_7eeba2c1ea19976bb154fad62a8f11c2,
+                    "\ud83d\udd34 Cortes de tr\u00e1fico" : feature_group_b27a626fb5327f16b3d71ea30914c090,
+                    "\ud83d\ude8c Lanzaderas de guaguas" : feature_group_89046b29e874b922f28b70462e285da6,
+                    "\ud83c\udd7f\ufe0f Aparcamientos habilitados" : feature_group_ee4e796247f0d357034e122c9e473316,
                 },
             };
-            let layer_control_db3e7143141ec747b69e1ca7f8d3780f = L.control.layers(
-                layer_control_db3e7143141ec747b69e1ca7f8d3780f_layers.base_layers,
-                layer_control_db3e7143141ec747b69e1ca7f8d3780f_layers.overlays,
+            let layer_control_ebe75ecfe91869187a1f79e194b1d992 = L.control.layers(
+                layer_control_ebe75ecfe91869187a1f79e194b1d992_layers.base_layers,
+                layer_control_ebe75ecfe91869187a1f79e194b1d992_layers.overlays,
                 {
   "position": "topright",
   "collapsed": false,
   "autoZIndex": true,
 }
-            ).addTo(map_6e2f3d137425539fd22f6daa342ac285);
+            ).addTo(map_36718b1390ff7bb14d7beca1f993bd33);
 
         
     
-            var tile_layer_26f8294b8ecbb09195a93f2aa693b6bf = L.tileLayer(
+            var tile_layer_9a69321bd2819be910bed8d9077f4b4e = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
-            var mini_map_6bc5f94c45d482a8eef0d4bdab0a3d7b = new L.Control.MiniMap(
-                tile_layer_26f8294b8ecbb09195a93f2aa693b6bf,
+            var mini_map_22a2b0079d83d90bbc72718bf8f63c1d = new L.Control.MiniMap(
+                tile_layer_9a69321bd2819be910bed8d9077f4b4e,
                 {
   "position": "bottomleft",
   "width": 150,
@@ -667,24 +837,7 @@
   "minimized": false,
 }
             );
-            map_6e2f3d137425539fd22f6daa342ac285.addControl(mini_map_6bc5f94c45d482a8eef0d4bdab0a3d7b);
-        
-    
-            var mouse_position_3fc3f699a0194eddb2ec8e073b4240cb = new L.Control.MousePosition(
-                {
-  "position": "bottomright",
-  "separator": " : ",
-  "emptyString": "Unavailable",
-  "lngFirst": false,
-  "numDigits": 5,
-  "prefix": "",
-}
-            );
-            mouse_position_3fc3f699a0194eddb2ec8e073b4240cb.options["latFormatter"] =
-                undefined;
-            mouse_position_3fc3f699a0194eddb2ec8e073b4240cb.options["lngFormatter"] =
-                undefined;
-            map_6e2f3d137425539fd22f6daa342ac285.addControl(mouse_position_3fc3f699a0194eddb2ec8e073b4240cb);
+            map_36718b1390ff7bb14d7beca1f993bd33.addControl(mini_map_22a2b0079d83d90bbc72718bf8f63c1d);
         
     
             L.control.fullscreen(
@@ -694,7 +847,7 @@
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_6e2f3d137425539fd22f6daa342ac285);
+            ).addTo(map_36718b1390ff7bb14d7beca1f993bd33);
         
 </script>
 </html>

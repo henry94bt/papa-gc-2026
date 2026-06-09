@@ -278,16 +278,29 @@ section {
 
 .dia-titulo {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--carbón);
-  margin: 0 0 32px -32px;
-  padding: 10px 20px;
-  background: var(--carbón);
-  color: var(--oro);
-  display: inline-block;
+  margin: 0 0 28px -32px;
+  padding: 8px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   border-radius: 6px;
 }
+.dia-gc { background: var(--carbón); color: var(--oro); }
+.dia-tf { background: #0a3d6b; color: #7ec8f7; }
+.badge-bajo { background:#DCFCE7; color:#166534; }
+.tenerife-bloque {
+  background: linear-gradient(135deg,#f0f7ff,#e8f4fd);
+  border: 1px solid #bde0f7;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 32px;
+  font-size: 13px;
+  color: #1a3a5c;
+  line-height: 1.6;
+}
+.tenerife-bloque strong { color: #0a3d6b; }
 
 .tl-item {
   display: flex;
@@ -601,6 +614,25 @@ footer {
   section { padding: 56px 16px; }
   .comparativa { padding: 20px; }
 }
+
+/* ── DATOS CURIOSOS ── */
+#curiosidades { background: var(--carbón); max-width:100%; padding:80px 24px; }
+#curiosidades .inner { max-width:1100px; margin:0 auto; }
+#curiosidades .seccion-titulo { color: var(--blanco); }
+#curiosidades .seccion-sub { color: rgba(255,255,255,0.45); }
+.curio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:48px; }
+.curio-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 14px;
+  padding: 26px 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.curio-card:hover { transform: translateY(-4px); border-color: var(--oro); }
+.curio-emoji { font-size: 28px; margin-bottom: 14px; display:block; }
+.curio-titulo { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--oro); margin-bottom:8px; line-height:1.3; }
+.curio-texto { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6; font-weight:300; }
+.curio-texto strong { color: rgba(255,255,255,0.85); font-weight:500; }
 </style>
 </head>
 <body>
@@ -624,6 +656,7 @@ footer {
   <div class="hero-nav">
     <a href="#estadisticas" class="nav-btn">Cifras</a>
     <a href="#cronologia"   class="nav-btn">Cronología</a>
+    <a href="#curiosidades" class="nav-btn">Curiosidades</a>
     <a href="#historia"     class="nav-btn">Historia</a>
     <a href="index.html"    class="nav-btn active">Ver mapa →</a>
   </div>
@@ -641,7 +674,7 @@ footer {
       <div class="stat-card">
         <span class="stat-icono">👥</span>
         <div class="stat-num" data-target="46000">0</div>
-        <div class="stat-label">Peregrinos esperados en la misa de Arguineguín</div>
+        <div class="stat-label">Peregrinos esperados en la misa del Estadio (Siete Palmas)</div>
         <div class="stat-nota">Estimación Cabildo GC</div>
       </div>
       <div class="stat-card">
@@ -690,32 +723,32 @@ footer {
 
   <div class="timeline reveal">
 
-    <div class="dia-titulo">Jueves 11 de junio</div>
+    <div class="dia-titulo dia-gc">🌴 Jueves 11 de junio · Gran Canaria</div>
 
     <div class="tl-item" onclick="toggleItem(this)">
-      <div class="tl-hora">10:00</div>
+      <div class="tl-hora">10:50</div>
       <div class="tl-contenido">
         <span class="tl-badge badge-alto">Impacto alto</span>
-        <div class="tl-evento">✈️ Llegada al Aeropuerto de Gran Canaria</div>
-        <div class="tl-lugar">Aeropuerto Internacional de Gran Canaria, Telde</div>
+        <div class="tl-evento">✈️ Llegada a la Base Aérea de Gando</div>
+        <div class="tl-lugar">Base Aérea de Gando, Telde</div>
         <div class="tl-detalle">
-          El Papa León XIV aterriza procedente de Roma. Recibimiento oficial por las autoridades insulares y religiosas. La GC-1 norte estará cortada en ambos sentidos entre el Nudo de Tafira y el aeropuerto desde las 08:00 hasta las 13:00.
+          León XIV aterriza procedente de Barcelona. Recepción institucional por el obispo de Canarias y las autoridades civiles y militares antes de iniciar el programa.
           <br><br>
-          💡 <strong>Consejo:</strong> Usa la GC-21 o el tranvía hasta Las Palmas Centro. Evita la zona aeroportuaria.
+          💡 <strong>Consejo:</strong> El dispositivo de tráfico arranca temprano. Evita la GC-1 a primera hora de la mañana.
         </div>
       </div>
     </div>
 
     <div class="tl-item" onclick="toggleItem(this)">
-      <div class="tl-hora">12:00</div>
+      <div class="tl-hora">11:40</div>
       <div class="tl-contenido">
         <span class="tl-badge badge-alto">Impacto alto</span>
-        <div class="tl-evento">🏛️ Recepción en el Cabildo de Gran Canaria</div>
-        <div class="tl-lugar">Sede del Cabildo, Las Palmas de Gran Canaria</div>
+        <div class="tl-evento">⛵ Encuentro con migrantes en el Muelle de Arguineguín</div>
+        <div class="tl-lugar">Muelle de Arguineguín, Mogán</div>
         <div class="tl-detalle">
-          Encuentro protocolario con el presidente del Cabildo y representantes institucionales. El centro de Las Palmas tendrá cortes de tráfico en las principales arterias.
+          Acto humanitario central del mensaje de la visita, ante unas 2.000 personas. El Papa escuchará el testimonio de cuatro migrantes procedentes de África y Latinoamérica, en el muelle símbolo de la ruta atlántica. Contará con la presencia del presidente del Gobierno, Pedro Sánchez, y actuaciones de Pedro Manuel Afonso y Benito Cabrera. <strong>No es una misa abierta al público.</strong>
           <br><br>
-          💡 <strong>Consejo:</strong> Aparca en el parking de Triana y accede a Vegueta a pie. Los aparcamientos de la zona estarán cerrados.
+          💡 <strong>Consejo:</strong> Acceso muy restringido en el muelle. Sigue las indicaciones del operativo de seguridad.
         </div>
       </div>
     </div>
@@ -724,56 +757,112 @@ footer {
       <div class="tl-hora">13:30</div>
       <div class="tl-contenido">
         <span class="tl-badge badge-alto">Impacto alto</span>
-        <div class="tl-evento">⛪ Visita a la Catedral de Santa Ana</div>
-        <div class="tl-lugar">Catedral de Santa Ana, Vegueta</div>
+        <div class="tl-evento">⛪ Encuentro con el clero en la Catedral de Santa Ana</div>
+        <div class="tl-lugar">Catedral de Santa Ana, Vegueta, Las Palmas de GC</div>
         <div class="tl-detalle">
-          Acto litúrgico en la catedral más antigua de las islas, construida en el siglo XV. Zona de exclusión total en Vegueta durante este período.
+          Encuentro con obispos, sacerdotes, diáconos, religiosos, seminaristas y agentes de pastoral de Canarias en la catedral más antigua del archipiélago. Acto interno para la comunidad católica.
           <br><br>
-          💡 <strong>Consejo:</strong> Intercambiadores provisionales habilitados en Pérez Galdós. Paradas de guagua de Vegueta/Santa Ana suspendidas.
+          💡 <strong>Consejo:</strong> Vegueta peatonalizada. Aparca en Triana y accede a pie. Cortes en GC-1 hacia LPGC de 12:00 a 13:30.
         </div>
       </div>
     </div>
 
     <div class="tl-item" onclick="toggleItem(this)">
-      <div class="tl-hora">18:00</div>
-      <div class="tl-contenido">
-        <span class="tl-badge badge-alto">Impacto alto</span>
-        <div class="tl-evento">🏟️ Acto multitudinario – Estadio de Gran Canaria</div>
-        <div class="tl-lugar">Estadio de Gran Canaria, Las Palmas</div>
-        <div class="tl-detalle">
-          Encuentro con jóvenes y fieles en el estadio. Aforo estimado: 32.000 personas en el recinto + miles en zonas habilitadas en el exterior.
-          <br><br>
-          💡 <strong>Consejo:</strong> Usa las líneas especiales L1-ESP y L2-ESP desde los P+R de Jinamar y Vecindario. Evita la GC-1 entre los km 8 y 15 de 16:00 a 23:00.
-        </div>
-      </div>
-    </div>
-
-    <div class="dia-titulo" style="margin-top: 40px;">Viernes 12 de junio</div>
-
-    <div class="tl-item" onclick="toggleItem(this)">
-      <div class="tl-hora">10:00</div>
-      <div class="tl-contenido">
-        <span class="tl-badge badge-alto">Impacto alto</span>
-        <div class="tl-evento">🙏 Misa multitudinaria – Arguineguín</div>
-        <div class="tl-lugar">Arguineguín, Mogán</div>
-        <div class="tl-detalle">
-          El acto central de la visita. Misa al aire libre con una asistencia esperada de hasta 46.000 personas. La GC-1 sur estará cortada desde Pasito Blanco hasta Arguineguín desde las 07:00.
-          <br><br>
-          💡 <strong>Consejo:</strong> Acceso EXCLUSIVAMENTE en guagua especial M1-ESP desde Maspalomas y San Bartolomé de Tirajana. No hay aparcamiento en la zona.
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item" onclick="toggleItem(this)">
-      <div class="tl-hora">16:00</div>
+      <div class="tl-hora">14:00</div>
       <div class="tl-contenido">
         <span class="tl-badge badge-medio">Impacto medio</span>
-        <div class="tl-evento">✈️ Despedida – Aeropuerto de Gran Canaria</div>
-        <div class="tl-lugar">Aeropuerto Internacional de Gran Canaria, Telde</div>
+        <div class="tl-evento">🎉 Apertura de la Fan Zone — Anexo del Estadio</div>
+        <div class="tl-lugar">Anexo del Estadio de Gran Canaria, Siete Palmas</div>
         <div class="tl-detalle">
-          Ceremonia de despedida y partida del Papa León XIV hacia Roma. Las restricciones aéreas se levantan progresivamente tras el despegue.
+          Espacio de acogida y convivencia antes de la misa, con música e identidad canaria: Los Gofiones, Cristina Ramos, Yeray Rodríguez y la escuela de verseadores, Javier Cerpa, El Colorao, el grupo Hakuna y La Clandestina de Agaete.
           <br><br>
-          💡 <strong>Consejo:</strong> Espera tráfico de retorno muy intenso en la GC-1 norte. Si puedes, retrasa tu viaje de vuelta hasta las 19:00.
+          💡 <strong>Consejo:</strong> Siete Palmas cierra al tráfico desde las 09:00. Usa las lanzaderas de guaguas desde Auditorio, Santa Catalina y San Telmo.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">18:30</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🙏 Santa Misa — Estadio de Gran Canaria</div>
+        <div class="tl-lugar">Estadio de Gran Canaria, Siete Palmas, Las Palmas de GC</div>
+        <div class="tl-detalle">
+          Acto central del día con más de 46.000 personas preinscritas. Gran escenario montado sobre el césped y acompañamiento musical de la Orquesta Filarmónica de Gran Canaria y su Coro. Duración estimada: 90 minutos.
+          <br><br>
+          💡 <strong>Consejo:</strong> Acceso EXCLUSIVAMENTE en guagua o lanzadera. Aparcamientos habilitados (7 Palmas, Hipercor, Infecar) solo con 4+ ocupantes. Evita el coche.
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-titulo dia-tf" style="margin-top:48px;">🌊 Viernes 12 de junio · Tenerife</div>
+
+    <div class="tenerife-bloque">
+      <strong>⚠️ Movilidad en Tenerife:</strong> El Papa vuela de Gran Canaria al aeropuerto Tenerife Norte. Se esperan restricciones en la TF-5 (autopista del norte) y en La Laguna durante toda la mañana. El tranvía Santa Cruz–La Laguna es la mejor opción.
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">09:10</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">✈️ Llegada al Aeropuerto Tenerife Norte</div>
+        <div class="tl-lugar">Aeropuerto Tenerife Norte-Ciudad de La Laguna</div>
+        <div class="tl-detalle">
+          Aterrizaje del avión pontificio procedente de Gran Canaria. Inicio de la jornada tinerfeña centrada en La Laguna y Santa Cruz.
+          <br><br>
+          💡 <strong>Consejo:</strong> La TF-5 tendrá restricciones desde primera hora. Usa el tranvía entre Santa Cruz y La Laguna.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">09:30</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🏠 Visita al Centro de Acogida Las Raíces</div>
+        <div class="tl-lugar">Centro de Acogida Las Raíces, La Laguna</div>
+        <div class="tl-detalle">
+          Encuentro con los migrantes acogidos en el centro, donde residen los perfiles más vulnerables llegados por la ruta atlántica.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">10:10</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🤝 Encuentro con organizaciones de integración</div>
+        <div class="tl-lugar">Plaza del Cristo, La Laguna</div>
+        <div class="tl-detalle">
+          Reunión con grupos eclesiales y organizaciones que trabajan con migrantes, en el corazón del casco histórico de La Laguna, Patrimonio de la Humanidad.
+          <br><br>
+          💡 <strong>Consejo:</strong> Casco histórico cortado. Accede en tranvía (parada La Trinidad / La Laguna).
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">12:15</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-alto">Impacto alto</span>
+        <div class="tl-evento">🙏 Santa Misa en el Puerto de Santa Cruz</div>
+        <div class="tl-lugar">Puerto de Santa Cruz de Tenerife</div>
+        <div class="tl-detalle">
+          Misa multitudinaria ante la imagen de la Virgen de Candelaria, patrona del archipiélago canario. El acto más concurrido del día en Tenerife.
+          <br><br>
+          💡 <strong>Consejo:</strong> Santa Cruz con cortes importantes. Usa el tranvía o las guaguas especiales desde el sur de Tenerife.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="toggleItem(this)">
+      <div class="tl-hora">14:30</div>
+      <div class="tl-contenido">
+        <span class="tl-badge badge-medio">Impacto medio</span>
+        <div class="tl-evento">👋 Ceremonia de despedida — Tenerife Norte</div>
+        <div class="tl-lugar">Aeropuerto Tenerife Norte-Ciudad de La Laguna</div>
+        <div class="tl-detalle">
+          Ceremonia oficial de despedida con el Rey Felipe VI. El avión pontificio parte a las 15:00 rumbo a Roma (Fiumicino), con llegada prevista a las 20:10, concluyendo el viaje apostólico a España.
         </div>
       </div>
     </div>
@@ -788,11 +877,11 @@ footer {
   <div class="reveal">
     <p class="seccion-label">Contexto histórico</p>
     <h2 class="seccion-titulo">Visitas papales a España</h2>
-    <p class="seccion-sub">La visita de Francisco a Canarias es la primera vez que un Papa pisa tierra canaria en toda la historia.</p>
+    <p class="seccion-sub">León XIV convierte a Canarias en destino papal por primera vez en la historia del archipiélago.</p>
   </div>
 
   <div class="historia-intro reveal">
-    Desde la visita histórica de Juan Pablo II en 1982 — la primera de un Papa a España en la era moderna — los pontífices han visitado el país en seis ocasiones. Francisco lleva el total a siete, y convierte a las Islas Canarias en destino papal por primera vez, añadiendo una dimensión histórica inédita a esta visita.
+    Desde la visita histórica de Juan Pablo II en 1982 — primera de un Papa a España en la era moderna — los pontífices han visitado el país en múltiples ocasiones. La visita de León XIV a Canarias añade un hito inédito: por primera vez en la historia, un Papa pisa tierra canaria, convirtiendo el archipiélago en protagonista del mapa apostólico.
   </div>
 
   <div class="visitas-grid reveal">
@@ -957,7 +1046,7 @@ footer {
     <div class="barra-item">
       <div class="barra-header">
         <span class="barra-papa">Benedicto XVI · Valencia 2006</span>
-        <span class="barra-num">1.46.000 personas</span>
+        <span class="barra-num">46.000 personas</span>
       </div>
       <div class="barra-track">
         <div class="barra-fill" style="background:#1D4ED8;" data-width="34%"></div>
@@ -976,6 +1065,68 @@ footer {
 
   </div>
 </section>
+
+<!-- ══ DATOS CURIOSOS ════════════════════════════════════════════ -->
+<div id="curiosidades">
+  <div class="inner">
+    <div class="reveal">
+      <p class="seccion-label">Para sorprender a tus amigos</p>
+      <h2 class="seccion-titulo">Datos curiosos de la visita</h2>
+      <p class="seccion-sub">Detalles que hacen de este viaje apostólico un hito histórico para Canarias.</p>
+    </div>
+    <div class="curio-grid reveal">
+
+      <div class="curio-card">
+        <span class="curio-emoji">🥇</span>
+        <div class="curio-titulo">Primer Papa en pisar Canarias</div>
+        <div class="curio-texto">En toda la historia, <strong>ningún Pontífice había visitado el archipiélago</strong>. León XIV rompe esa barrera de siglos el 11 de junio de 2026.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">⛵</span>
+        <div class="curio-titulo">Arguineguín, símbolo migratorio</div>
+        <div class="curio-texto">El muelle elegido para el acto humanitario es <strong>uno de los principales puntos de llegada de cayucos</strong> de la ruta atlántica. La visita pone el foco en la realidad migratoria de Canarias.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">🤝</span>
+        <div class="curio-titulo">Pedro Sánchez en Arguineguín</div>
+        <div class="curio-texto">El presidente del Gobierno <strong>acompañará al Papa</strong> en el muelle, acercándose al drama migratorio en un acto de fuerte simbolismo político y social.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">👑</span>
+        <div class="curio-titulo">Despedida con el Rey Felipe VI</div>
+        <div class="curio-texto">La ceremonia de despedida en Tenerife Norte contará con la <strong>presencia del Rey</strong>, antes de que el avión papal parta hacia Roma.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">🎵</span>
+        <div class="curio-titulo">Música 100% canaria</div>
+        <div class="curio-texto">La Fan Zone reunirá a <strong>Los Gofiones, Cristina Ramos, Yeray Rodríguez y El Colorao</strong>, y la misa contará con la Orquesta Filarmónica de Gran Canaria y su Coro.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">🚫</span>
+        <div class="curio-titulo">Siete Palmas, 15 horas cerrada</div>
+        <div class="curio-texto">El entorno del Estadio quedará <strong>cerrado al tráfico desde las 9:00 hasta medianoche</strong>: casi un día entero de blindaje para la misa.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">🙏</span>
+        <div class="curio-titulo">Virgen de Candelaria</div>
+        <div class="curio-texto">La misa de Tenerife se celebra ante la <strong>patrona del archipiélago canario</strong>, en el puerto de Santa Cruz, uniendo religiosidad e identidad isleña.</div>
+      </div>
+
+      <div class="curio-card">
+        <span class="curio-emoji">🏛️</span>
+        <div class="curio-titulo">15 años sin visita papal</div>
+        <div class="curio-texto">La última visita de un Papa a España fue la de <strong>Benedicto XVI en 2011</strong>. León XIV rompe una década y media de espera.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- ══ CTA MAPA ═══════════════════════════════════════════════════ -->
 <div class="mapa-cta">

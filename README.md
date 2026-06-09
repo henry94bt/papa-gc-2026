@@ -34,7 +34,8 @@ papa-gc-2026/
 │
 ├── agenda_papa.geojson        # Eventos papales (Points)
 ├── cortes_trafico.geojson     # Cortes de tráfico (LineStrings)
-├── guaguas_impacto.geojson    # Paradas/intercambiadores (Points)
+├── guaguas_impacto.geojson    # Lanzaderas de guaguas (Points)
+├── aparcamientos.geojson      # Aparcamientos habilitados (Points)
 │
 ├── index.html                 # Mapa interactivo (salida final)
 ├── dashboard.html             # Dashboard con cronología, cifras e historia
@@ -102,7 +103,8 @@ Abre `index.html` en tu navegador para ver el resultado.
 - **Marcadores por evento** con código de color según nivel de impacto (Alto / Medio / Bajo)
 - **Popups informativos** con horario, ubicación y consejo de movilidad personalizado
 - **Líneas de cortes de tráfico** sobre las carreteras afectadas
-- **Intercambiadores P+R** y paradas de guagua inhabilitadas
+- **Lanzaderas de guaguas** a Siete Palmas (Auditorio, Santa Catalina, San Telmo)
+- **Aparcamientos habilitados** con plazas disponibles (7 Palmas, Hipercor, Infecar)
 - **Control de capas** para activar/desactivar cada tipo de información
 - **Diseño mobile-first** optimizado para compartir por WhatsApp
 
@@ -120,14 +122,15 @@ El archivo `dashboard.html` incluye:
 ## ⚠️ Limitaciones del MVP
 
 - Las coordenadas de los cortes de tráfico son aproximaciones hasta que el Cabildo publique la resolución oficial
-- El aeropuerto de Gran Canaria no fue geocodificado correctamente por Nominatim (nombre no reconocido); se puede corregir con coordenadas fijas
 - Los datos de aforo y seguridad son estimaciones basadas en fuentes públicas
 
 ---
 
 ## 🔜 Próximas mejoras
 
-- [ ] Integrar PDF oficial del Cabildo con los cortes exactos una vez publicado
+- [x] Integrar cortes oficiales del Cabildo (GC-1, GC-3, Siete Palmas)
+- [x] Añadir capa de aparcamientos habilitados
+- [x] Cobertura de la agenda de Tenerife (día 12)
 - [ ] Añadir time-slider para filtrar el mapa por hora del día
 - [ ] Corregir geocodificación del aeropuerto con coordenadas fijas
 - [ ] Publicar en GitHub Pages con dominio personalizado
